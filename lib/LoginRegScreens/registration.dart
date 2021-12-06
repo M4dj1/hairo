@@ -35,16 +35,17 @@ class _RegistartionState extends State<Registartion> {
                   style: TextStyle(color: Colors.white60),
                   cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
+                    isDense: true,
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Text('+213'),
+                    ),
                     hintText: 'Phone Number',
                     hintStyle: TextStyle(color: Colors.white38),
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.orangeAccent)),
-                    prefix: Padding(
-                      padding: EdgeInsets.all(4),
-                      child: Text('+213'),
-                    ),
                   ),
-                  maxLength: 10,
+                  maxLength: 9,
                   keyboardType: TextInputType.number,
                   controller: _controller,
                 ),
@@ -54,6 +55,7 @@ class _RegistartionState extends State<Registartion> {
               margin: EdgeInsets.all(10),
               width: double.infinity,
               child: MaterialButton(
+                height: 50,
                 color: Colors.orangeAccent,
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
