@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 margin: EdgeInsets.only(top: 100),
                 child: Center(
                   child: Text(
-                    'Login Into Application',
+                    'Login Into Hairo',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 28,
@@ -40,12 +40,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(color: Colors.white70),
                   cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
+                    prefix: Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Text('+213'),
+                    ),
                     hintText: 'Phone Number',
                     hintStyle: TextStyle(color: Colors.white38),
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.orangeAccent)),
                   ),
-                  maxLength: 10,
+                  maxLength: 9,
                   keyboardType: TextInputType.number,
                   controller: _controller,
                 ),
