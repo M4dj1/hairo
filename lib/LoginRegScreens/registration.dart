@@ -12,16 +12,13 @@ class _RegistartionState extends State<Registartion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Firebase Authentication'),
-      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Column(children: [
               Container(
-                margin: EdgeInsets.only(top: 60),
+                margin: EdgeInsets.only(top: 100),
                 child: Center(
                   child: Text(
                     'Signup with Mobile Number',
@@ -32,6 +29,7 @@ class _RegistartionState extends State<Registartion> {
               Container(
                 margin: EdgeInsets.only(top: 40, right: 10, left: 10),
                 child: TextField(
+                  cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
                     hintText: 'Phone Number',
                     prefix: Padding(
@@ -49,7 +47,7 @@ class _RegistartionState extends State<Registartion> {
               margin: EdgeInsets.all(10),
               width: double.infinity,
               child: MaterialButton(
-                color: Colors.blue,
+                color: Colors.orangeAccent,
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => OTPScreen(_controller.text)));

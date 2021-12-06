@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hairo/loginpage.dart';
+import 'package:hairo/LoginRegScreens/loginpage.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {

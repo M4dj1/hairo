@@ -1,7 +1,7 @@
 import 'package:hairo/main.dart';
 import 'package:flutter/material.dart';
 
-import 'home.dart';
+import '../home.dart';
 
 class PasswordScreen extends StatefulWidget {
   final String phone;

@@ -1,7 +1,7 @@
 import 'package:hairo/main.dart';
 import 'package:flutter/material.dart';
 
-import 'home.dart';
+import '../home.dart';
 import 'registration.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,16 +17,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldkey,
-      appBar: AppBar(
-        title: Text('Login Page'),
-      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Column(children: [
               Container(
-                margin: EdgeInsets.only(top: 60),
+                margin: EdgeInsets.only(top: 100),
                 child: Center(
                   child: Text(
                     'Login Into Application',
@@ -37,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 margin: EdgeInsets.only(top: 40, right: 10, left: 10),
                 child: TextField(
+                  cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
                     hintText: 'Phone Number',
                   ),
@@ -46,8 +44,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 40, right: 10, left: 10),
+                margin:
+                    EdgeInsets.only(top: 40, right: 10, left: 10, bottom: 40),
                 child: TextField(
+                  cursorColor: Colors.orangeAccent,
                   keyboardType: TextInputType.text,
                   controller: _passwordcontroller,
                   obscureText: true,
@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
               margin: EdgeInsets.all(10),
               width: double.infinity,
               child: MaterialButton(
-                color: Colors.blue,
+                color: Colors.orangeAccent,
                 onPressed: () {
                   dbRef
                       .reference()
