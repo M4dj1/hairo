@@ -2,9 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hairo/loginpage.dart';
 import 'package:flutter/material.dart';
 
-import 'registration.dart';
-
 class Home extends StatefulWidget {
+  //ignore: must_be_immutable
   String uid;
   String name;
   Home(this.uid, this.name);

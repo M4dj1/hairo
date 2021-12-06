@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       .get()
                       .then((value) {
                     if (value.value == null) {
-                      _scaffoldkey.currentState!.showSnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('No User Found')));
                       return;
                     }

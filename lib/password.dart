@@ -1,7 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hairo/main.dart';
 import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 
 import 'home.dart';
 
@@ -71,13 +69,13 @@ class _PasswordState extends State<PasswordScreen> {
                 color: Colors.blue,
                 onPressed: () {
                   if (_nameController.text.length <= 4) {
-                    _scaffoldkey.currentState!.showSnackBar(SnackBar(
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content:
                             Text('Password should be minimum 4 characters')));
                     return;
                   }
                   if (_passwordController.text.length <= 4) {
-                    _scaffoldkey.currentState!.showSnackBar(SnackBar(
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content:
                             Text('Password should be minimum 4 characters')));
                   }
@@ -95,7 +93,7 @@ class _PasswordState extends State<PasswordScreen> {
                                 Home(widget.uid, _nameController.text)),
                         (route) => false);
                   }).onError((error, stackTrace) {
-                    _scaffoldkey.currentState!.showSnackBar(
+                    ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('${error.toString()}')));
                   });
                 },

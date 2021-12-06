@@ -1,10 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hairo/main.dart';
 import 'package:hairo/password.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
-import 'home.dart';
 
 class OTPScreen extends StatefulWidget {
   final String phone;
@@ -16,8 +13,6 @@ class OTPScreen extends StatefulWidget {
 class _OTPScreenState extends State<OTPScreen> {
   final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   late String _verificationCode;
-  final TextEditingController _pinPutController = TextEditingController();
-  final FocusNode _pinPutFocusNode = FocusNode();
   final BoxDecoration pinPutDecoration = BoxDecoration(
     color: const Color.fromRGBO(43, 46, 66, 1),
     borderRadius: BorderRadius.circular(10.0),
@@ -72,7 +67,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     });
                   } catch (e) {
                     FocusScope.of(context).unfocus();
-                    _scaffoldkey.currentState!
+                    ScaffoldMessenger.of(context)
                         .showSnackBar(SnackBar(content: Text('invalid OTP')));
                   }
                 },
