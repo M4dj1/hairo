@@ -22,16 +22,23 @@ class _RegistartionState extends State<Registartion> {
                 child: Center(
                   child: Text(
                     'Signup with Mobile Number',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28,
+                        color: Colors.white),
                   ),
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(top: 40, right: 10, left: 10),
                 child: TextField(
+                  style: TextStyle(color: Colors.white60),
                   cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
                     hintText: 'Phone Number',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.orangeAccent)),
                     prefix: Padding(
                       padding: EdgeInsets.all(4),
                       child: Text('+213'),

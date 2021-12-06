@@ -27,16 +27,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Center(
                   child: Text(
                     'Login Into Application',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28,
+                        color: Colors.white),
                   ),
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(top: 40, right: 10, left: 10),
                 child: TextField(
+                  style: TextStyle(color: Colors.white70),
                   cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
                     hintText: 'Phone Number',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.orangeAccent)),
                   ),
                   maxLength: 10,
                   keyboardType: TextInputType.number,
@@ -47,6 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 margin:
                     EdgeInsets.only(top: 40, right: 10, left: 10, bottom: 40),
                 child: TextField(
+                  style: TextStyle(color: Colors.white70),
                   cursorColor: Colors.orangeAccent,
                   keyboardType: TextInputType.text,
                   controller: _passwordcontroller,
@@ -54,6 +62,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   maxLength: 15,
                   decoration: InputDecoration(
                     hintText: 'Password',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.orangeAccent)),
                   ),
                 ),
               ),
@@ -62,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               margin: EdgeInsets.all(10),
               width: double.infinity,
               child: MaterialButton(
+                height: 50,
                 color: Colors.orangeAccent,
                 onPressed: () {
                   dbRef
@@ -109,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: Text(
                   'Don\'t have account? Signup',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             )
