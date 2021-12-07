@@ -32,7 +32,11 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: Center(
-        child: Text('Welcome ${widget.name}'),
+        child: Text(
+          'Welcome ${widget.name}',
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
+        ),
       ),
     );
   }
