@@ -37,18 +37,25 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                 margin: EdgeInsets.only(top: 40, right: 10, left: 10),
                 child: TextField(
-                  style: TextStyle(color: Colors.white70),
+                  style: TextStyle(color: Colors.white),
                   cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
-                    prefix: Padding(
-                      padding: EdgeInsets.all(4),
-                      child: Text('+213'),
-                    ),
-                    hintText: 'Phone Number',
-                    hintStyle: TextStyle(color: Colors.white38),
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.orangeAccent)),
-                  ),
+                      prefixIcon: Text(
+                        "+213 ",
+                        style: TextStyle(
+                            color: Colors.deepOrangeAccent.shade100,
+                            fontSize: 16),
+                      ),
+                      prefixIconConstraints:
+                          BoxConstraints(minWidth: 0, minHeight: 0),
+                      hintText: 'Phone Number',
+                      hintStyle: TextStyle(color: Colors.white38),
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.orangeAccent)),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.deepOrangeAccent.shade100),
+                      )),
                   maxLength: 9,
                   keyboardType: TextInputType.number,
                   controller: _controller,
@@ -58,27 +65,33 @@ class _LoginScreenState extends State<LoginScreen> {
                 margin:
                     EdgeInsets.only(top: 40, right: 10, left: 10, bottom: 40),
                 child: TextField(
-                  style: TextStyle(color: Colors.white70),
+                  style: TextStyle(color: Colors.white),
                   cursorColor: Colors.orangeAccent,
                   keyboardType: TextInputType.text,
                   controller: _passwordcontroller,
                   obscureText: true,
                   maxLength: 15,
                   decoration: InputDecoration(
-                    hintText: 'Password',
-                    hintStyle: TextStyle(color: Colors.white38),
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.orangeAccent)),
-                  ),
+                      hintText: 'Password',
+                      hintStyle: TextStyle(color: Colors.white38),
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.orangeAccent)),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.deepOrangeAccent.shade100),
+                      )),
                 ),
               ),
             ]),
             Container(
-              margin: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 10.0, right: 100.0, left: 100.0),
               width: double.infinity,
-              child: MaterialButton(
-                height: 50,
-                color: Colors.orangeAccent,
+              height: 50,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.orangeAccent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40))),
                 onPressed: () {
                   dbRef
                       .reference()

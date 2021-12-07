@@ -32,12 +32,15 @@ class _OTPScreenState extends State<OTPScreen> {
               child: Center(
                 child: Text(
                   'Verify +213-${widget.phone}',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 26,
+                      color: Colors.white),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(40.0),
               child: PinCodeTextField(
                 appContext: context,
                 length: 6,
