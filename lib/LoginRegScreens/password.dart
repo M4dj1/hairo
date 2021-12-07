@@ -23,50 +23,81 @@ class _PasswordState extends State<PasswordScreen> {
     _phoneController.text = (widget.phone);
     return Scaffold(
       key: _scaffoldkey,
-      appBar: AppBar(
-        title: Text('Set Password'),
-      ),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.only(top: 100.0),
         child: Column(
           children: [
+            Container(
+              child: Center(
+                child: Text(
+                  'User Info',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28,
+                      color: Colors.white),
+                ),
+              ),
+            ),
             Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding:
+                    const EdgeInsets.only(right: 30.0, left: 30.0, top: 40.0),
                 child: TextField(
+                  style: TextStyle(color: Colors.white),
+                  cursorColor: Colors.orangeAccent,
                   keyboardType: TextInputType.text,
                   controller: _phoneController,
                   enabled: false,
                   decoration: InputDecoration(
                     hintText: 'mobile',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.orangeAccent)),
                   ),
                 )),
             Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding:
+                  const EdgeInsets.only(right: 30.0, left: 30.0, top: 40.0),
               child: TextField(
+                style: TextStyle(color: Colors.white),
+                cursorColor: Colors.orangeAccent,
                 keyboardType: TextInputType.text,
                 controller: _nameController,
                 maxLength: 15,
                 decoration: InputDecoration(
                   hintText: 'Enter Name',
+                  hintStyle: TextStyle(color: Colors.white38),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.orangeAccent)),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding: const EdgeInsets.only(
+                  right: 30.0, left: 30.0, top: 30.0, bottom: 40),
               child: TextField(
+                style: TextStyle(color: Colors.white),
+                cursorColor: Colors.orangeAccent,
                 keyboardType: TextInputType.text,
                 controller: _passwordController,
                 obscureText: true,
                 maxLength: 15,
                 decoration: InputDecoration(
                   hintText: 'Password',
+                  hintStyle: TextStyle(color: Colors.white38),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.orangeAccent)),
                 ),
               ),
             ),
             Container(
-              margin: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 10.0, right: 100.0, left: 100.0),
               width: double.infinity,
-              child: MaterialButton(
-                color: Colors.blue,
+              height: 50,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.orangeAccent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40))),
                 onPressed: () {
                   if (_nameController.text.length <= 4) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(

@@ -30,13 +30,13 @@ class _RegistartionState extends State<Registartion> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 40, right: 10, left: 10),
+                margin:
+                    EdgeInsets.only(top: 40, right: 10, left: 10, bottom: 40),
                 child: TextField(
-                  style: TextStyle(color: Colors.white60),
+                  style: TextStyle(color: Colors.white),
                   cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
-                    isDense: true,
-                    prefixIcon: Padding(
+                    prefix: Padding(
                       padding: EdgeInsets.all(4),
                       child: Text('+213'),
                     ),
@@ -52,11 +52,14 @@ class _RegistartionState extends State<Registartion> {
               )
             ]),
             Container(
-              margin: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 10.0, right: 100.0, left: 100.0),
               width: double.infinity,
-              child: MaterialButton(
-                height: 50,
-                color: Colors.orangeAccent,
+              height: 50,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.orangeAccent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40))),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => OTPScreen(_controller.text)));
