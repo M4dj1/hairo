@@ -46,20 +46,42 @@ class _PasswordState extends State<PasswordScreen> {
                 padding:
                     const EdgeInsets.only(right: 30.0, left: 30.0, top: 40.0),
                 child: TextField(
+                  textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.orangeAccent),
                   cursorColor: Colors.orangeAccent,
                   keyboardType: TextInputType.text,
                   controller: _phoneController,
                   enabled: false,
                   decoration: InputDecoration(
-                      hintText: 'mobile',
-                      hintStyle: TextStyle(color: Colors.white38),
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.orangeAccent)),
                       focusedBorder: UnderlineInputBorder(
                         borderSide:
                             BorderSide(color: Colors.deepOrangeAccent.shade100),
                       )),
+                )),
+            Padding(
+                padding:
+                    const EdgeInsets.only(right: 30.0, left: 30.0, top: 40.0),
+                child: GenderPickerWithImage(
+                  onChanged: (Gender? gender) {
+                    gendController = gender.toString().substring(7);
+                  },
+                  showOtherGender: false,
+                  verticalAlignedText: false,
+                  selectedGender: Gender.Male,
+                  selectedGenderTextStyle: TextStyle(
+                      color: Colors.deepOrangeAccent,
+                      fontWeight: FontWeight.bold),
+                  unSelectedGenderTextStyle: TextStyle(
+                      color: Colors.orangeAccent,
+                      fontWeight: FontWeight.normal),
+                  equallyAligned: true,
+                  animationDuration: Duration(milliseconds: 300),
+                  isCircular: true,
+                  opacityOfGradient: 0.4,
+                  padding: const EdgeInsets.all(3),
+                  size: 50,
                 )),
             Padding(
               padding:
@@ -81,29 +103,6 @@ class _PasswordState extends State<PasswordScreen> {
                     )),
               ),
             ),
-            Padding(
-                padding:
-                    const EdgeInsets.only(right: 30.0, left: 30.0, top: 40.0),
-                child: GenderPickerWithImage(
-                  onChanged: (Gender? gender) {
-                    gendController = gender.toString().substring(7);
-                  },
-                  showOtherGender: false,
-                  verticalAlignedText: false,
-                  selectedGender: Gender.Male,
-                  selectedGenderTextStyle: TextStyle(
-                      color: Colors.deepOrangeAccent.shade100,
-                      fontWeight: FontWeight.bold),
-                  unSelectedGenderTextStyle: TextStyle(
-                      color: Colors.orangeAccent,
-                      fontWeight: FontWeight.normal),
-                  equallyAligned: true,
-                  animationDuration: Duration(milliseconds: 300),
-                  isCircular: true,
-                  opacityOfGradient: 0.4,
-                  padding: const EdgeInsets.all(3),
-                  size: 50,
-                )),
             Padding(
               padding: const EdgeInsets.only(
                   right: 30.0, left: 30.0, top: 30.0, bottom: 40),
@@ -137,8 +136,7 @@ class _PasswordState extends State<PasswordScreen> {
                 onPressed: () {
                   if (_nameController.text.length <= 4) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content:
-                            Text('Password should be minimum 4 characters')));
+                        content: Text('Name should be minimum 4 characters')));
                     return;
                   }
                   if (_passwordController.text.length <= 4) {

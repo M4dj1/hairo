@@ -52,7 +52,7 @@ class _RegistartionState extends State<Registartion> {
                         borderSide:
                             BorderSide(color: Colors.deepOrangeAccent.shade100),
                       )),
-                  maxLength: 9,
+                  maxLength: 10,
                   keyboardType: TextInputType.number,
                   controller: _controller,
                 ),

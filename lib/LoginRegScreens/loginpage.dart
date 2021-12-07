@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderSide:
                             BorderSide(color: Colors.deepOrangeAccent.shade100),
                       )),
-                  maxLength: 9,
+                  maxLength: 10,
                   keyboardType: TextInputType.number,
                   controller: _controller,
                 ),
@@ -107,19 +107,26 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     print("User Password ${value.value}");
                     Map data = value.value;
+                    var isFound = false;
                     data.forEach((key, value) {
                       if (_passwordcontroller.text == value['password'] &&
                           (_controller.text == value['mobile'])) {
-                        print("User Exist");
+                        isFound = true;
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Home(key, value['name'])),
                             (route) => false);
-                      } else {
-                        print("User Not found Exist");
                       }
                     });
+                    if (isFound == false) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                        'Incorrect username or password !',
+                        style: TextStyle(color: Colors.red.shade600),
+                        textAlign: TextAlign.center,
+                      )));
+                    }
                   });
                 },
                 child: Text(
@@ -133,12 +140,14 @@ class _LoginScreenState extends State<LoginScreen> {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => Registartion()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Registartion()),
+                  );
                 },
                 child: Text(
-                  'Don\'t have account? Signup',
-                  style: TextStyle(color: Colors.white),
+                  'Don\'t have an account ? - Signup',
+                  style: TextStyle(color: Colors.deepOrangeAccent.shade100),
                 ),
               ),
             )
