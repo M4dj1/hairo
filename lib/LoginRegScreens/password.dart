@@ -48,11 +48,14 @@ class _PasswordState extends State<PasswordScreen> {
                   controller: _phoneController,
                   enabled: false,
                   decoration: InputDecoration(
-                    hintText: 'mobile',
-                    hintStyle: TextStyle(color: Colors.white38),
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.orangeAccent)),
-                  ),
+                      hintText: 'mobile',
+                      hintStyle: TextStyle(color: Colors.white38),
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.orangeAccent)),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.deepOrangeAccent.shade100),
+                      )),
                 )),
             Padding(
               padding:
@@ -64,11 +67,14 @@ class _PasswordState extends State<PasswordScreen> {
                 controller: _nameController,
                 maxLength: 15,
                 decoration: InputDecoration(
-                  hintText: 'Enter Name',
-                  hintStyle: TextStyle(color: Colors.white38),
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.orangeAccent)),
-                ),
+                    hintText: 'Enter Name',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.orangeAccent)),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.deepOrangeAccent.shade100),
+                    )),
               ),
             ),
             Padding(
@@ -82,11 +88,14 @@ class _PasswordState extends State<PasswordScreen> {
                 obscureText: true,
                 maxLength: 15,
                 decoration: InputDecoration(
-                  hintText: 'Password',
-                  hintStyle: TextStyle(color: Colors.white38),
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.orangeAccent)),
-                ),
+                    hintText: 'Password',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.orangeAccent)),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.deepOrangeAccent.shade100),
+                    )),
               ),
             ),
             Container(

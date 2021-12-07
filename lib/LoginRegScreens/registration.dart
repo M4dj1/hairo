@@ -36,15 +36,22 @@ class _RegistartionState extends State<Registartion> {
                   style: TextStyle(color: Colors.white),
                   cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
-                    prefix: Padding(
-                      padding: EdgeInsets.all(4),
-                      child: Text('+213'),
-                    ),
-                    hintText: 'Phone Number',
-                    hintStyle: TextStyle(color: Colors.white38),
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.orangeAccent)),
-                  ),
+                      prefixIcon: Text(
+                        "+213 ",
+                        style: TextStyle(
+                            color: Colors.deepOrangeAccent.shade100,
+                            fontSize: 16),
+                      ),
+                      prefixIconConstraints:
+                          BoxConstraints(minWidth: 0, minHeight: 0),
+                      hintText: 'Phone Number',
+                      hintStyle: TextStyle(color: Colors.white38),
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.orangeAccent)),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.deepOrangeAccent.shade100),
+                      )),
                   maxLength: 9,
                   keyboardType: TextInputType.number,
                   controller: _controller,
