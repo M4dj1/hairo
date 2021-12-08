@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:hairo/main.dart';
 import 'package:flutter/material.dart';
 
@@ -155,5 +157,30 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    var name;
+    print("inside init loginpage");
+    if (currentUser != null) {
+      print("currentuser exists");
+      dbRef
+          .child(currentUser.uid)
+          .child("name")
+          .once()
+          .then((DataSnapshot data) {
+        name = data.value;
+        print(currentUser.uid.toString());
+        print(name.toString());
+      });
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  Home(currentUser.uid.toString(), name.toString())));
+    }
+    super.initState();
   }
 }
