@@ -25,14 +25,26 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Column(children: [
               Container(
-                margin: EdgeInsets.only(top: 100),
+                  margin: EdgeInsets.only(top: 100),
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/logo.png',
+                      ),
+                      fit: BoxFit.fill,
+                    ),
+                  )),
+              Container(
+                margin: EdgeInsets.only(top: 20),
                 child: Center(
                   child: Text(
-                    'Login Into Hairo',
+                    'Sign In',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 28,
-                        color: Colors.white),
+                        color: Colors.deepOrangeAccent.shade700),
                   ),
                 ),
               ),
