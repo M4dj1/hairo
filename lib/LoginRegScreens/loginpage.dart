@@ -55,10 +55,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
                       prefixIcon: Text(
-                        "+213 ",
+                        " +213 ",
                         style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             color: Colors.deepOrangeAccent.shade100,
-                            fontSize: 16),
+                            fontSize: 14),
                       ),
                       prefixIconConstraints:
                           BoxConstraints(minWidth: 0, minHeight: 0),
@@ -86,6 +87,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: true,
                   maxLength: 15,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.vpn_key_outlined,
+                        color: Colors.deepOrangeAccent.shade100,
+                      ),
                       hintText: 'Password',
                       hintStyle: TextStyle(color: Colors.white38),
                       enabledBorder: UnderlineInputBorder(

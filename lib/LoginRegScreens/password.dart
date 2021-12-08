@@ -37,7 +37,7 @@ class _PasswordState extends State<PasswordScreen> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 28,
-                      color: Colors.white),
+                      color: Colors.deepOrangeAccent.shade700),
                 ),
               ),
             ),
@@ -92,6 +92,10 @@ class _PasswordState extends State<PasswordScreen> {
                 controller: _nameController,
                 maxLength: 15,
                 decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.face_outlined,
+                      color: Colors.deepOrangeAccent.shade100,
+                    ),
                     hintText: 'Enter Name',
                     hintStyle: TextStyle(color: Colors.white38),
                     enabledBorder: UnderlineInputBorder(
@@ -113,6 +117,10 @@ class _PasswordState extends State<PasswordScreen> {
                 obscureText: true,
                 maxLength: 15,
                 decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.vpn_key_outlined,
+                      color: Colors.deepOrangeAccent.shade100,
+                    ),
                     hintText: 'Password',
                     hintStyle: TextStyle(color: Colors.white38),
                     enabledBorder: UnderlineInputBorder(

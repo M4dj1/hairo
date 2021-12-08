@@ -37,10 +37,11 @@ class _RegistartionState extends State<Registartion> {
                   cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
                       prefixIcon: Text(
-                        "+213 ",
+                        " +213 ",
                         style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             color: Colors.deepOrangeAccent.shade100,
-                            fontSize: 16),
+                            fontSize: 14),
                       ),
                       prefixIconConstraints:
                           BoxConstraints(minWidth: 0, minHeight: 0),
