@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
       ),
       body: Center(
         child: Text(
-          'Welcome ${widget.name}',
+          'Welcome Back ${widget.name}',
           style: TextStyle(
               fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
         ),
@@ -43,8 +43,6 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    // uid = FirebaseAuth.instance.currentUser!.uid;
   }
 }

@@ -178,26 +178,25 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    final currentUser = FirebaseAuth.instance.currentUser;
-    var name;
-    print("inside init loginpage");
-    if (currentUser != null) {
-      print("currentuser exists");
-      dbRef
-          .child(currentUser.uid)
-          .child("name")
-          .once()
-          .then((DataSnapshot data) {
-        name = data.value;
-        print(currentUser.uid.toString());
-        print(name.toString());
-      });
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  Home(currentUser.uid.toString(), name.toString())));
-    }
     super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      final currentUser = FirebaseAuth.instance.currentUser;
+      var name;
+      if (currentUser != null) {
+        dbRef
+            .child(currentUser.uid)
+            .child("name")
+            .once()
+            .then((DataSnapshot data) {
+          name = data.value;
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      Home(currentUser.uid.toString(), name.toString())),
+              (route) => false);
+        });
+      }
+    });
   }
 }
