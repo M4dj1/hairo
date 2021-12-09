@@ -1,19 +1,27 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hairo/LoginRegScreens/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 
-class Home extends StatefulWidget {
-  //ignore: must_be_immutable
-  String uid;
-  String name;
-  Home(this.uid, this.name);
-  @override
-  _HomeState createState() => _HomeState();
+void main() {
+  runApp(MyApp());
 }
 
-class _HomeState extends State<Home> {
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final _advancedDrawerController = AdvancedDrawerController();
+
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
@@ -37,6 +45,7 @@ class _HomeState extends State<Home> {
       ),
       child: Scaffold(
         appBar: AppBar(
+          title: const Text('Advanced Drawer Example'),
           leading: IconButton(
             onPressed: _handleMenuButtonPressed,
             icon: ValueListenableBuilder<AdvancedDrawerValue>(
@@ -52,28 +61,8 @@ class _HomeState extends State<Home> {
               },
             ),
           ),
-          backgroundColor: Colors.orangeAccent,
-          title: Text('Home'),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.logout),
-              onPressed: () async {
-                await FirebaseAuth.instance.signOut();
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
-                    (route) => false);
-              },
-            )
-          ],
         ),
-        body: Center(
-          child: Text(
-            'Welcome Back ${widget.name}',
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
-          ),
-        ),
+        body: Container(),
       ),
       drawer: SafeArea(
         child: Container(
@@ -88,14 +77,15 @@ class _HomeState extends State<Home> {
                   height: 128.0,
                   margin: const EdgeInsets.only(
                     top: 24.0,
-                    bottom: 24.0,
+                    bottom: 64.0,
                   ),
                   clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
-                    color: Colors.transparent,
+                    color: Colors.black26,
+                    shape: BoxShape.circle,
                   ),
                   child: Image.asset(
-                    'assets/images/logo.png',
+                    'assets/images/flutter_logo.png',
                   ),
                 ),
                 ListTile(
@@ -143,10 +133,5 @@ class _HomeState extends State<Home> {
     // NOTICE: Manage Advanced Drawer state through the Controller.
     // _advancedDrawerController.value = AdvancedDrawerValue.visible();
     _advancedDrawerController.showDrawer();
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 }

@@ -33,6 +33,7 @@ dependencies:
   firebase_database: ^8.2.0
   pin_code_fields: ^7.3.0
   gender_picker: ^1.1.0
+  flutter_advanced_drawer: ^1.3.0
 
 dev_dependencies:
   flutter_test:
