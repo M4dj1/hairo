@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'LoginRegScreens/loginpage.dart';
+import 'package:hairo/intro.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: new ThemeData(scaffoldBackgroundColor: const Color(0x7D7D7D7D)),
-      home: LoginScreen(),
+      theme: ThemeData(scaffoldBackgroundColor: Colors.black),
+      home: Intro(),
     );
   }
 }

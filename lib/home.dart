@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
-      backdropColor: Color(0x7D7D7D7D),
+      backdropColor: Colors.black,
       controller: _advancedDrawerController,
       animationCurve: Curves.easeInOut,
       animationDuration: const Duration(milliseconds: 300),
@@ -67,11 +67,15 @@ class _HomeState extends State<Home> {
             )
           ],
         ),
-        body: Center(
-          child: Text(
-            'Welcome Back ${widget.name}',
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
+        body: Container(
+          child: Center(
+            child: Text(
+              'Welcome Back ${widget.name}',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                  color: Colors.white),
+            ),
           ),
         ),
       ),
@@ -122,7 +126,7 @@ class _HomeState extends State<Home> {
                 DefaultTextStyle(
                   style: TextStyle(
                     fontSize: 12,
-                    color: Colors.white54,
+                    color: Colors.deepOrangeAccent.shade100,
                   ),
                   child: Container(
                     margin: const EdgeInsets.symmetric(
