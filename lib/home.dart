@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 
 class Home extends StatefulWidget {
-  //ignore: must_be_immutable
-  String uid;
-  String name;
-  Home(this.uid, this.name);
+  Map userValues;
+  Home(this.userValues);
   @override
   _HomeState createState() => _HomeState();
 }
@@ -70,7 +68,7 @@ class _HomeState extends State<Home> {
         body: Container(
           child: Center(
             child: Text(
-              'Welcome Back ${widget.name}',
+              'Welcome Back ${widget.userValues["name"]}',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 28,

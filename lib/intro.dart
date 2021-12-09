@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hairo/LoginRegScreens/loginpage.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
+import 'package:hairo/home.dart';
 
 class Intro extends StatelessWidget {
+  Map userValues;
+  Intro(this.userValues);
   final pages = [
     PageViewModel(
       pageColor: const Color(0xFF03A9F4),
@@ -88,7 +91,7 @@ class Intro extends StatelessWidget {
             // so the user will not be able to slide back to the Intro Views.
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => LoginScreen()),
+              MaterialPageRoute(builder: (_) => Home(userValues)),
             );
           },
           pageButtonTextStyles: const TextStyle(

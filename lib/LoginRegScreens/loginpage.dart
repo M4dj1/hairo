@@ -3,7 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:hairo/main.dart';
 import 'package:flutter/material.dart';
 
-import '../home.dart';
+import '../intro.dart';
 import 'registration.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -135,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Home(key, value['name'])),
+                                builder: (context) => Intro(value)),
                             (route) => false);
                       }
                     });
@@ -182,19 +182,12 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       final currentUser = FirebaseAuth.instance.currentUser;
-      var name;
       if (currentUser != null) {
-        dbRef
-            .child(currentUser.uid)
-            .child("name")
-            .once()
-            .then((DataSnapshot data) {
-          name = data.value;
+        dbRef.child(currentUser.uid).once().then((DataSnapshot snapshot) {
+          Map<dynamic, dynamic> userValues = snapshot.value;
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      Home(currentUser.uid.toString(), name.toString())),
+              MaterialPageRoute(builder: (context) => Intro(userValues)),
               (route) => false);
         });
       }

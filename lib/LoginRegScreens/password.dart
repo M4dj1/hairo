@@ -162,8 +162,7 @@ class _PasswordState extends State<PasswordScreen> {
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                Home(widget.uid, _nameController.text)),
+                            builder: (context) => Home(userDetails)),
                         (route) => false);
                   }).onError((error, stackTrace) {
                     ScaffoldMessenger.of(context).showSnackBar(
