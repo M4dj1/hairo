@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Column(children: [
               Container(
-                  margin: EdgeInsets.only(top: 100),
+                  margin: EdgeInsets.only(top: 40),
                   height: 200,
                   width: 200,
                   decoration: BoxDecoration(
@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   )),
               Container(
-                margin: EdgeInsets.only(top: 20),
+                margin: EdgeInsets.only(top: 10),
                 child: Center(
                   child: Text(
                     'Sign In',
@@ -131,6 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (_passwordcontroller.text == value['password'] &&
                           (_controller.text == value['mobile'])) {
                         isFound = true;
+
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
