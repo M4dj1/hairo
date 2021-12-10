@@ -1,9 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hairo/main.dart';
 import 'package:flutter/material.dart';
 
-import '../intro.dart';
+import '../home.dart';
 import 'registration.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -127,15 +127,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     print("User Password ${value.value}");
                     Map data = value.value;
                     var isFound = false;
-                    data.forEach((key, value) {
+                    data.forEach((key, value) async {
                       if (_passwordcontroller.text == value['password'] &&
                           (_controller.text == value['mobile'])) {
                         isFound = true;
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        prefs.setString('uid', key);
 
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Intro(value)),
+                                builder: (context) => Home(value)),
                             (route) => false);
                       }
                     });
@@ -180,14 +183,15 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      final currentUser = FirebaseAuth.instance.currentUser;
-      if (currentUser != null) {
-        dbRef.child(currentUser.uid).once().then((DataSnapshot snapshot) {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var uid = prefs.getString('uid');
+      if (uid != null) {
+        dbRef.child(uid).once().then((DataSnapshot snapshot) {
           Map<dynamic, dynamic> userValues = snapshot.value;
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => Intro(userValues)),
+              MaterialPageRoute(builder: (context) => Home(userValues)),
               (route) => false);
         });
       }

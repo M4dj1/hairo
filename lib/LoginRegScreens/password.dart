@@ -2,8 +2,9 @@ import 'package:hairo/main.dart';
 import 'package:flutter/material.dart';
 import 'package:gender_picker/source/enums.dart';
 import 'package:gender_picker/gender_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../home.dart';
+import '../intro.dart';
 
 class PasswordScreen extends StatefulWidget {
   final String phone;
@@ -152,17 +153,20 @@ class _PasswordState extends State<PasswordScreen> {
                             Text('Password should be minimum 4 characters')));
                   }
                   Map userDetails = {
+                    "uid": widget.uid,
                     "mobile": widget.phone,
                     "password": _passwordController.text,
                     "name": _nameController.text,
                     "gender": gendController,
                   };
-
-                  dbRef.child(widget.uid).set(userDetails).then((value) {
+                  dbRef.child(widget.uid).set(userDetails).then((value) async {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setString('uid', widget.uid);
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Home(userDetails)),
+                            builder: (context) => Intro(userDetails)),
                         (route) => false);
                   }).onError((error, stackTrace) {
                     ScaffoldMessenger.of(context).showSnackBar(

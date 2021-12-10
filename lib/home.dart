@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hairo/LoginRegScreens/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   Map userValues;
@@ -56,7 +57,8 @@ class _HomeState extends State<Home> {
             IconButton(
               icon: Icon(Icons.logout),
               onPressed: () async {
-                await FirebaseAuth.instance.signOut();
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.remove('uid');
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => LoginScreen()),
