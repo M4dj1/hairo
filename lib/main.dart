@@ -7,6 +7,7 @@ import '../home.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var uid = prefs.getString('uid');
   if (uid != null) {
