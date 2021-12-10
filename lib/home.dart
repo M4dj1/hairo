@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
-      backdropColor: Colors.black,
+      backdropColor: Color(0xff266867),
       controller: _advancedDrawerController,
       animationCurve: Curves.easeInOut,
       animationDuration: const Duration(milliseconds: 300),
@@ -35,6 +35,7 @@ class _HomeState extends State<Home> {
       ),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xfff58800),
           leading: IconButton(
             onPressed: _handleMenuButtonPressed,
             icon: ValueListenableBuilder<AdvancedDrawerValue>(
@@ -50,7 +51,6 @@ class _HomeState extends State<Home> {
               },
             ),
           ),
-          backgroundColor: Colors.orangeAccent,
           title: Text('Home'),
           actions: [
             IconButton(
@@ -80,8 +80,8 @@ class _HomeState extends State<Home> {
       drawer: SafeArea(
         child: Container(
           child: ListTileTheme(
-            textColor: Colors.white,
-            iconColor: Colors.white,
+            textColor: Colors.deepOrangeAccent,
+            iconColor: Colors.deepOrangeAccent,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hairo/LoginRegScreens/loginpage.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 import 'package:hairo/home.dart';
 
@@ -8,7 +7,20 @@ class Intro extends StatelessWidget {
   Intro(this.userValues);
   final pages = [
     PageViewModel(
-      pageColor: const Color(0xFF03A9F4),
+      pageBackground: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            stops: [0.0, 1.0],
+            begin: FractionalOffset.topCenter,
+            end: FractionalOffset.bottomCenter,
+            tileMode: TileMode.repeated,
+            colors: [
+              Color(0xfff8bc24),
+              Color(0xff266867),
+            ],
+          ),
+        ),
+      ),
       // iconImageAssetPath: 'assets/air-hostess.png',
       bubble: Image.asset('assets/images/logo.png'),
       body: const Text(
@@ -28,7 +40,20 @@ class Intro extends StatelessWidget {
       ),
     ),
     PageViewModel(
-      pageColor: const Color(0xFF8BC34A),
+      pageBackground: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            stops: [0.0, 1.0],
+            begin: FractionalOffset.topCenter,
+            end: FractionalOffset.bottomCenter,
+            tileMode: TileMode.repeated,
+            colors: [
+              Color(0xFF1A4645),
+              Color(0xfff58800),
+            ],
+          ),
+        ),
+      ),
       iconImageAssetPath: 'assets/images/logo.png',
       body: const Text(
         'We  work  for  the  comfort ,  enjoy  your  stay  at  our  beautiful  hotels',
@@ -53,8 +78,8 @@ class Intro extends StatelessWidget {
             end: FractionalOffset.bottomCenter,
             tileMode: TileMode.repeated,
             colors: [
-              Colors.orange,
-              Colors.pinkAccent,
+              Color(0xfff58800),
+              Color(0xff051821),
             ],
           ),
         ),
@@ -80,7 +105,7 @@ class Intro extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'IntroViews Flutter',
-      theme: ThemeData(scaffoldBackgroundColor: Colors.black),
+      theme: ThemeData(scaffoldBackgroundColor: Color(0xFF1A4645)),
       home: Builder(
         builder: (context) => IntroViewsFlutter(
           pages,
