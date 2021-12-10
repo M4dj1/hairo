@@ -3,7 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:hairo/main.dart';
 import 'package:flutter/material.dart';
 
-import '../home.dart';
+import '../intro.dart';
 import 'registration.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -25,14 +25,26 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Column(children: [
               Container(
-                margin: EdgeInsets.only(top: 100),
+                  margin: EdgeInsets.only(top: 40),
+                  height: 200,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/logo.png',
+                      ),
+                      fit: BoxFit.fill,
+                    ),
+                  )),
+              Container(
+                margin: EdgeInsets.only(top: 10),
                 child: Center(
                   child: Text(
-                    'Login Into Hairo',
+                    'Sign In',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 28,
-                        color: Colors.white),
+                        color: Colors.deepOrangeAccent.shade700),
                   ),
                 ),
               ),
@@ -43,10 +55,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   cursorColor: Colors.orangeAccent,
                   decoration: InputDecoration(
                       prefixIcon: Text(
-                        "+213 ",
+                        " +213 ",
                         style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             color: Colors.deepOrangeAccent.shade100,
-                            fontSize: 16),
+                            fontSize: 14),
                       ),
                       prefixIconConstraints:
                           BoxConstraints(minWidth: 0, minHeight: 0),
@@ -74,6 +87,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: true,
                   maxLength: 15,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.vpn_key_outlined,
+                        color: Colors.deepOrangeAccent.shade100,
+                      ),
                       hintText: 'Password',
                       hintStyle: TextStyle(color: Colors.white38),
                       enabledBorder: UnderlineInputBorder(
@@ -114,10 +131,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (_passwordcontroller.text == value['password'] &&
                           (_controller.text == value['mobile'])) {
                         isFound = true;
+
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Home(key, value['name'])),
+                                builder: (context) => Intro(value)),
                             (route) => false);
                       }
                     });
@@ -161,26 +179,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    final currentUser = FirebaseAuth.instance.currentUser;
-    var name;
-    print("inside init loginpage");
-    if (currentUser != null) {
-      print("currentuser exists");
-      dbRef
-          .child(currentUser.uid)
-          .child("name")
-          .once()
-          .then((DataSnapshot data) {
-        name = data.value;
-        print(currentUser.uid.toString());
-        print(name.toString());
-      });
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  Home(currentUser.uid.toString(), name.toString())));
-    }
     super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      final currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser != null) {
+        dbRef.child(currentUser.uid).once().then((DataSnapshot snapshot) {
+          Map<dynamic, dynamic> userValues = snapshot.value;
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => Intro(userValues)),
+              (route) => false);
+        });
+      }
+    });
   }
 }
