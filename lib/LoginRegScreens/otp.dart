@@ -107,7 +107,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   fillGradient: null,
                   backgroundColor: Colors.red.shade400,
                   backgroundGradient: null,
-                  strokeWidth: 5.0,
+                  strokeWidth: 2.0,
                   strokeCap: StrokeCap.round,
                   textStyle: TextStyle(
                       fontSize: 10.0,
