@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:hairo/main.dart';
 import 'package:flutter/material.dart';
 
@@ -28,9 +31,9 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Column(children: [
               Container(
-                  margin: EdgeInsets.only(top: 40),
-                  height: 200,
-                  width: 200,
+                  margin: EdgeInsets.only(top: 70),
+                  height: 100,
+                  width: 110,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
@@ -39,16 +42,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       fit: BoxFit.fill,
                     ),
                   )),
-              Container(
-                margin: EdgeInsets.only(top: 10),
-                child: Center(
-                  child: Text(
-                    'Sign In',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 28,
-                        color: Colors.deepOrangeAccent.shade700),
-                  ),
+              DefaultTextStyle(
+                style: TextStyle(
+                    fontSize: 30.0,
+                    color: Color(0xff266867),
+                    fontFamily: 'Horizon'),
+                child: AnimatedTextKit(
+                  totalRepeatCount: 1,
+                  pause: Duration(milliseconds: 0),
+                  repeatForever: false,
+                  animatedTexts: [
+                    WavyAnimatedText('H a i r O',
+                        speed: Duration(milliseconds: 130)),
+                  ],
+                  isRepeatingAnimation: true,
                 ),
               ),
               Container(
