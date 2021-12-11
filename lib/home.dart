@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
-      backdropColor: Color(0xff266867),
+      backdropColor: Color(0xFF1A4645),
       controller: _advancedDrawerController,
       animationCurve: Curves.easeInOut,
       animationDuration: const Duration(milliseconds: 300),
@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xfff58800),
+          backgroundColor: Colors.orangeAccent,
           leading: IconButton(
             onPressed: _handleMenuButtonPressed,
             icon: ValueListenableBuilder<AdvancedDrawerValue>(

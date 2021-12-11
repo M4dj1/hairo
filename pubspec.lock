@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  dots_indicator:
+    dependency: transitive
+    description:
+      name: dots_indicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -177,13 +184,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "9.2.0"
-  gender_picker:
-    dependency: "direct main"
-    description:
-      name: gender_picker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   http_parser:
     dependency: transitive
     description:
@@ -198,13 +198,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.17.0"
-  intro_views_flutter:
+  introduction_screen:
     dependency: "direct main"
     description:
-      name: intro_views_flutter
+      name: introduction_screen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "2.1.0"
   js:
     dependency: transitive
     description:

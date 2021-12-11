@@ -1,5 +1,6 @@
 login    -> Color(0xff051821)
 home     -> Color(0xFF1A4645)
 Backhome -> Color(0xff266867)
-appbar   -> Color(0xfff58800)
+appbar   -> Color(0xfff58800) - Colors.orangeAccent ??
 addition -> Color(0xfff8bc24)
+Icons    -> Colors.deepOrangeAccent.shade100
