@@ -9,9 +9,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  var uid = prefs.getString('uid');
-  if (uid != null) {
-    dbRef.child(uid).once().then((DataSnapshot snapshot) {
+  var mobile = prefs.getString('mobile');
+  if (mobile != null) {
+    dbRef.child(mobile).once().then((DataSnapshot snapshot) {
       Map<dynamic, dynamic> userValues = snapshot.value;
       runApp(MaterialApp(
         home: Home(userValues),

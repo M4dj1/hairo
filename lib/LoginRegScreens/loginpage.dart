@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Container(
                   margin: EdgeInsets.only(top: 70),
                   height: 100,
-                  width: 110,
+                  width: 100,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
@@ -157,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         isFound = true;
                         SharedPreferences prefs =
                             await SharedPreferences.getInstance();
-                        prefs.setString('uid', key);
+                        prefs.setString('mobile', value['mobile']);
 
                         Navigator.pushAndRemoveUntil(
                             context,
@@ -211,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      var uid = prefs.getString('uid');
+      var uid = prefs.getString('mobile');
       if (uid != null) {
         dbRef.child(uid).once().then((DataSnapshot snapshot) {
           Map<dynamic, dynamic> userValues = snapshot.value;

@@ -1,8 +1,8 @@
 import 'package:hairo/main.dart';
 import 'package:flutter/material.dart';
-import 'package:gender_picker/source/enums.dart';
-import 'package:gender_picker/gender_picker.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../intro.dart';
 
@@ -18,9 +18,11 @@ class _PasswordState extends State<PasswordScreen> {
   final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordControllerC = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   var _passwordVisible;
   var _obscureText;
+  var _obscureText1;
   @override
   Widget build(BuildContext context) {
     _phoneController.text = (widget.phone);
@@ -43,28 +45,33 @@ class _PasswordState extends State<PasswordScreen> {
               ),
             ),
             Padding(
-                padding:
-                    const EdgeInsets.only(right: 30.0, left: 30.0, top: 40.0),
-                child: GenderPickerWithImage(
-                  onChanged: (Gender? gender) {
-                    gendController = gender.toString().substring(7);
-                  },
-                  showOtherGender: false,
-                  verticalAlignedText: false,
-                  selectedGender: Gender.Male,
-                  selectedGenderTextStyle: TextStyle(
-                      color: Colors.deepOrangeAccent,
-                      fontWeight: FontWeight.bold),
-                  unSelectedGenderTextStyle: TextStyle(
-                      color: Colors.orangeAccent,
-                      fontWeight: FontWeight.normal),
-                  equallyAligned: true,
-                  animationDuration: Duration(milliseconds: 300),
-                  isCircular: true,
-                  opacityOfGradient: 0.4,
-                  padding: const EdgeInsets.all(3),
-                  size: 50,
-                )),
+              padding: const EdgeInsets.only(top: 40.0),
+              child: ToggleSwitch(
+                borderWidth: 1,
+                iconSize: 20,
+                animationDuration: 400,
+                animate: true,
+                minWidth: 100.0,
+                initialLabelIndex: 1,
+                cornerRadius: 20.0,
+                activeFgColor: Colors.orangeAccent,
+                inactiveBgColor: Color(0xff051821),
+                inactiveFgColor: Colors.orangeAccent,
+                borderColor: [Colors.orangeAccent],
+                totalSwitches: 2,
+                labels: ['Male', 'Female'],
+                icons: [FontAwesomeIcons.mars, FontAwesomeIcons.venus],
+                activeBgColors: [
+                  [Colors.blue.shade300],
+                  [Colors.pink.shade300]
+                ],
+                onToggle: (index) {
+                  index == 0
+                      ? gendController = "Male"
+                      : gendController = "Female";
+                },
+              ),
+            ),
             Padding(
               padding:
                   const EdgeInsets.only(right: 30.0, left: 30.0, top: 40.0),
@@ -90,8 +97,8 @@ class _PasswordState extends State<PasswordScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                  right: 30.0, left: 30.0, top: 30.0, bottom: 40),
+              padding:
+                  const EdgeInsets.only(right: 30.0, left: 30.0, top: 30.0),
               child: TextField(
                 style: TextStyle(color: Colors.white),
                 cursorColor: Colors.orangeAccent,
@@ -128,6 +135,45 @@ class _PasswordState extends State<PasswordScreen> {
                     )),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  right: 30.0, left: 30.0, top: 30.0, bottom: 40),
+              child: TextField(
+                style: TextStyle(color: Colors.white),
+                cursorColor: Colors.orangeAccent,
+                keyboardType: TextInputType.text,
+                controller: _passwordControllerC,
+                obscureText: _obscureText1,
+                maxLength: 15,
+                decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.vpn_key_outlined,
+                      color: Colors.deepOrangeAccent.shade100,
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _passwordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: Colors.deepOrangeAccent.shade100,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _passwordVisible = !_passwordVisible;
+                          _obscureText = !_obscureText1;
+                        });
+                      },
+                    ),
+                    hintText: 'Confirm Password',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.orangeAccent)),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.deepOrangeAccent.shade100),
+                    )),
+              ),
+            ),
             Container(
               margin: EdgeInsets.only(top: 10.0, right: 100.0, left: 100.0),
               width: double.infinity,
@@ -138,39 +184,45 @@ class _PasswordState extends State<PasswordScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40))),
                 onPressed: () {
-                  if (_nameController.text.length <= 4) {
+                  if (_nameController.text.length < 6) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('Name should be minimum 4 characters')));
+                        content: Text('Name should be minimum 6 characters')));
                     return;
-                  }
-                  if (_passwordController.text.length <= 4) {
+                  } else if (_passwordController.text.length < 6) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content:
-                            Text('Password should be minimum 4 characters')));
-                  }
-                  Map userDetails = {
-                    "uid": widget.uid,
-                    "mobile": widget.phone,
-                    "password": _passwordController.text,
-                    "name": _nameController.text,
-                    "gender": gendController,
-                  };
-                  dbRef
-                      .child(widget.phone)
-                      .set(userDetails)
-                      .then((value) async {
-                    SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    prefs.setString('uid', widget.uid);
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Intro(userDetails)),
-                        (route) => false);
-                  }).onError((error, stackTrace) {
+                            Text('Password should be minimum 6 characters')));
+                  } else if (_passwordControllerC.text !=
+                      _passwordController.text) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('${error.toString()}')));
-                  });
+                        SnackBar(content: Text('Passwords Dont match')));
+                    _passwordControllerC.text = "";
+                    _passwordController.text = "";
+                  } else {
+                    Map userDetails = {
+                      "uid": widget.uid,
+                      "mobile": widget.phone,
+                      "password": _passwordController.text,
+                      "name": _nameController.text,
+                      "gender": gendController,
+                    };
+                    dbRef
+                        .child(widget.phone)
+                        .set(userDetails)
+                        .then((value) async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setString('mobile', widget.phone);
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Intro(userDetails)),
+                          (route) => false);
+                    }).onError((error, stackTrace) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('${error.toString()}')));
+                    });
+                  }
                 },
                 child: Text(
                   'Submit',
@@ -188,6 +240,7 @@ class _PasswordState extends State<PasswordScreen> {
   void initState() {
     _passwordVisible = false;
     _obscureText = true;
+    _obscureText1 = true;
     // TODO: implement initState
     super.initState();
   }

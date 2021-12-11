@@ -1,8 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hairo/LoginRegScreens/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class Home extends StatefulWidget {
   Map userValues;
@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
               icon: Icon(Icons.logout),
               onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
-                prefs.remove('uid');
+                prefs.remove('mobile');
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => LoginScreen()),
@@ -82,24 +82,39 @@ class _HomeState extends State<Home> {
       drawer: SafeArea(
         child: Container(
           child: ListTileTheme(
-            textColor: Colors.deepOrangeAccent,
-            iconColor: Colors.deepOrangeAccent,
+            textColor: Colors.grey.shade200,
+            iconColor: Colors.grey.shade200,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
-                  width: 128.0,
-                  height: 128.0,
-                  margin: const EdgeInsets.only(
-                    top: 24.0,
-                    bottom: 24.0,
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                  ),
-                  child: Image.asset(
-                    'assets/images/logo.png',
+                    margin: EdgeInsets.only(top: 70),
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          'assets/images/logo.png',
+                        ),
+                        fit: BoxFit.fill,
+                      ),
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 40.0),
+                  child: DefaultTextStyle(
+                    style: TextStyle(
+                        fontSize: 23.0,
+                        color: Colors.grey.shade200,
+                        fontFamily: 'Horizon'),
+                    child: AnimatedTextKit(
+                      pause: Duration(seconds: 5),
+                      repeatForever: true,
+                      animatedTexts: [
+                        WavyAnimatedText('H a i r O',
+                            speed: Duration(milliseconds: 100)),
+                      ],
+                      isRepeatingAnimation: true,
+                    ),
                   ),
                 ),
                 ListTile(
@@ -126,7 +141,7 @@ class _HomeState extends State<Home> {
                 DefaultTextStyle(
                   style: TextStyle(
                     fontSize: 12,
-                    color: Colors.deepOrangeAccent.shade100,
+                    color: Colors.grey.shade200,
                   ),
                   child: Container(
                     margin: const EdgeInsets.symmetric(

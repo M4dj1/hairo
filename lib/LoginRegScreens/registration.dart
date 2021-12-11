@@ -21,7 +21,7 @@ class _RegistartionState extends State<Registartion> {
                 margin: EdgeInsets.only(top: 100),
                 child: Center(
                   child: Text(
-                    'Signup with Mobile Number',
+                    'Sign Up',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 28,
