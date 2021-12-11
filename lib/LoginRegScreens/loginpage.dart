@@ -150,11 +150,25 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     print("User Password ${value.value}");
                     Map data = value.value;
-                    var isFound = false;
                     data.forEach((key, value) async {
-                      if (_passwordcontroller.text == value['password'] &&
+                      if (_controller.text.length < 9) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                          'Please verify your phone number !',
+                          style: TextStyle(color: Colors.red.shade600),
+                          textAlign: TextAlign.center,
+                        )));
+                      } else if (_passwordcontroller.text == "" ||
+                          _controller.text == "") {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                          'Password or Phone number is empty !',
+                          style: TextStyle(color: Colors.red.shade600),
+                          textAlign: TextAlign.center,
+                        )));
+                      } else if (_passwordcontroller.text ==
+                              value['password'] &&
                           (_controller.text == value['mobile'])) {
-                        isFound = true;
                         SharedPreferences prefs =
                             await SharedPreferences.getInstance();
                         prefs.setString('mobile', value['mobile']);
@@ -164,16 +178,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             MaterialPageRoute(
                                 builder: (context) => Home(value)),
                             (route) => false);
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                          'Incorrect username or password !',
+                          style: TextStyle(color: Colors.red.shade600),
+                          textAlign: TextAlign.center,
+                        )));
                       }
                     });
-                    if (isFound == false) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text(
-                        'Incorrect username or password !',
-                        style: TextStyle(color: Colors.red.shade600),
-                        textAlign: TextAlign.center,
-                      )));
-                    }
                   });
                 },
                 child: Text(
