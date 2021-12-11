@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
               DefaultTextStyle(
                 style: TextStyle(
                     fontSize: 30.0,
-                    color: Color(0xff266867),
+                    color: Colors.grey.shade200,
                     fontFamily: 'Horizon'),
                 child: AnimatedTextKit(
                   totalRepeatCount: 1,
@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   repeatForever: false,
                   animatedTexts: [
                     WavyAnimatedText('H a i r O',
-                        speed: Duration(milliseconds: 130)),
+                        speed: Duration(milliseconds: 100)),
                   ],
                   isRepeatingAnimation: true,
                 ),
