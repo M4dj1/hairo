@@ -97,7 +97,7 @@ class _PasswordState extends State<PasswordScreen> {
                 cursorColor: Colors.orangeAccent,
                 keyboardType: TextInputType.text,
                 controller: _passwordController,
-                obscureText: true,
+                obscureText: _obscureText,
                 maxLength: 15,
                 decoration: InputDecoration(
                     prefixIcon: Icon(
