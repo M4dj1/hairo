@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hairo/LoginRegScreens/password.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 
 class OTPScreen extends StatefulWidget {
   final String phone;
@@ -13,6 +14,8 @@ class OTPScreen extends StatefulWidget {
 class _OTPScreenState extends State<OTPScreen> {
   final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   late String _verificationCode;
+  CountDownController _controller = CountDownController();
+
   final BoxDecoration pinPutDecoration = BoxDecoration(
     color: const Color.fromRGBO(43, 46, 66, 1),
     borderRadius: BorderRadius.circular(10.0),
@@ -76,7 +79,54 @@ class _OTPScreenState extends State<OTPScreen> {
                   setState(() {});
                 },
               ),
-            )
+            ),
+            Stack(
+              fit: StackFit.passthrough,
+              alignment: Alignment.center,
+              children: [
+                Container(
+                    height: 150,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          'assets/images/smartphone.png',
+                        ),
+                        fit: BoxFit.fill,
+                      ),
+                    )),
+                CircularCountDownTimer(
+                  duration: 120,
+                  initialDuration: 0,
+                  controller: _controller,
+                  width: 28,
+                  height: 28,
+                  ringColor: Colors.blue.shade200,
+                  ringGradient: null,
+                  fillColor: Color(0xff266867),
+                  fillGradient: null,
+                  backgroundColor: Colors.red.shade400,
+                  backgroundGradient: null,
+                  strokeWidth: 5.0,
+                  strokeCap: StrokeCap.round,
+                  textStyle: TextStyle(
+                      fontSize: 10.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                  textFormat: CountdownTextFormat.S,
+                  isReverse: true,
+                  isReverseAnimation: false,
+                  isTimerTextShown: true,
+                  autoStart: true,
+                  onStart: () {
+                    print('Countdown Started');
+                  },
+                  onComplete: () {
+                    print('Countdown Ended');
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ),
