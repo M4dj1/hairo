@@ -16,6 +16,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
+      openRatio: 0.42,
       backdropColor: Color(0xFF1A4645),
       controller: _advancedDrawerController,
       animationCurve: Curves.easeInOut,
@@ -88,7 +89,7 @@ class _HomeState extends State<Home> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
-                    margin: EdgeInsets.only(top: 70),
+                    margin: EdgeInsets.only(top: 70, left: 30),
                     height: 60,
                     width: 60,
                     decoration: BoxDecoration(
@@ -100,7 +101,7 @@ class _HomeState extends State<Home> {
                       ),
                     )),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 40.0),
+                  padding: const EdgeInsets.only(bottom: 40.0, left: 30),
                   child: DefaultTextStyle(
                     style: TextStyle(
                         fontSize: 23.0,
@@ -118,24 +119,43 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 ListTile(
+                  horizontalTitleGap: 30,
                   onTap: () {},
                   leading: Icon(Icons.home),
                   title: Text('Home'),
                 ),
                 ListTile(
+                  horizontalTitleGap: 30,
                   onTap: () {},
                   leading: Icon(Icons.account_circle_rounded),
                   title: Text('Profile'),
                 ),
                 ListTile(
+                  minLeadingWidth: 10,
+                  horizontalTitleGap: 30,
                   onTap: () {},
                   leading: Icon(Icons.favorite),
                   title: Text('Favourites'),
                 ),
                 ListTile(
+                  minLeadingWidth: 33,
+                  horizontalTitleGap: 30,
                   onTap: () {},
                   leading: Icon(Icons.settings),
                   title: Text('Settings'),
+                ),
+                ListTile(
+                  minLeadingWidth: 46,
+                  horizontalTitleGap: 30,
+                  onTap: () {},
+                  leading: Icon(Icons.help),
+                  title: Text('Help'),
+                ),
+                ListTile(
+                  horizontalTitleGap: 31,
+                  onTap: () {},
+                  leading: Icon(Icons.emoji_objects),
+                  title: Text('About'),
                 ),
                 Spacer(),
                 DefaultTextStyle(
@@ -147,7 +167,7 @@ class _HomeState extends State<Home> {
                     margin: const EdgeInsets.symmetric(
                       vertical: 16.0,
                     ),
-                    child: Text('Terms of Service | Privacy Policy'),
+                    child: Text('Terms of Service\n   Privacy Policy'),
                   ),
                 ),
               ],
