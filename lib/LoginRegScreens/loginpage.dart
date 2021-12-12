@@ -224,9 +224,9 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      var uid = prefs.getString('mobile');
-      if (uid != null) {
-        dbRef.child(uid).once().then((DataSnapshot snapshot) {
+      var mobile = prefs.getString('mobile');
+      if (mobile != null) {
+        dbRef.child(mobile).once().then((DataSnapshot snapshot) {
           Map<dynamic, dynamic> userValues = snapshot.value;
           Navigator.pushAndRemoveUntil(
               context,
