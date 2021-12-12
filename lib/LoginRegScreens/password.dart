@@ -160,7 +160,7 @@ class _PasswordState extends State<PasswordScreen> {
                       onPressed: () {
                         setState(() {
                           _passwordVisible = !_passwordVisible;
-                          _obscureText = !_obscureText1;
+                          _obscureText1 = !_obscureText1;
                         });
                       },
                     ),
