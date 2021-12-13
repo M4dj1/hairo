@@ -45,7 +45,7 @@ class _OTPScreenState extends State<OTPScreen> {
             Padding(
               padding: const EdgeInsets.all(40.0),
               child: PinCodeTextField(
-                textStyle: TextStyle(color: Colors.white),
+                textStyle: TextStyle(color: Color(0xff115170)),
                 appContext: context,
                 length: 6,
                 obscureText: true,

@@ -62,7 +62,7 @@ class _OnBoardingPageState extends State<Intro> {
         width: double.infinity,
         height: 60,
         child: ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Color(0xFF1A4645)),
+          style: ElevatedButton.styleFrom(primary: Color(0xFF0d3d54)),
           child: Text(
             'Let\s go right away!',
             style: TextStyle(
@@ -177,7 +177,7 @@ class _OnBoardingPageState extends State<Intro> {
         ),
       ),
       dotsContainerDecorator: ShapeDecoration(
-        color: Color(0xff266867),
+        color: Color(0xff115170),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20.0)),
         ),

@@ -53,12 +53,12 @@ class _PasswordState extends State<PasswordScreen> {
                 animationDuration: 400,
                 animate: true,
                 minWidth: 100.0,
-                initialLabelIndex: 1,
+                initialLabelIndex: 0,
                 cornerRadius: 20.0,
                 activeFgColor: Colors.orangeAccent,
                 inactiveBgColor: Color(0xff051821),
                 inactiveFgColor: Colors.orangeAccent,
-                borderColor: [Colors.orangeAccent],
+                borderColor: [Color(0xff0d3d54)],
                 totalSwitches: 2,
                 labels: ['Male', 'Female'],
                 icons: [FontAwesomeIcons.mars, FontAwesomeIcons.venus],
@@ -194,7 +194,7 @@ class _PasswordState extends State<PasswordScreen> {
                           color: Colors.orangeAccent,
                         ),
                         new Text(
-                          "  Signing-Up...",
+                          "    Signing-Up...",
                           style: TextStyle(color: Colors.orangeAccent),
                         )
                       ],

@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return AdvancedDrawer(
         openRatio: 0.42,
-        backdropColor: Color(0xFF1A4645),
+        backdropColor: Color(0xFF0d3d54),
         controller: _advancedDrawerController,
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 300),
