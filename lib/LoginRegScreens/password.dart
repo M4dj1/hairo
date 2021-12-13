@@ -184,16 +184,28 @@ class _PasswordState extends State<PasswordScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40))),
                 onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+                    duration: new Duration(seconds: 4),
+                    content: new Row(
+                      children: <Widget>[
+                        new CircularProgressIndicator(),
+                        new Text("  Signing-Up...")
+                      ],
+                    ),
+                  ));
                   if (_nameController.text.length < 6) {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text('Name should be minimum 6 characters')));
                     return;
                   } else if (_passwordController.text.length < 6) {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content:
                             Text('Password should be minimum 6 characters')));
                   } else if (_passwordControllerC.text !=
                       _passwordController.text) {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Passwords Dont match')));
                     _passwordControllerC.text = "";
@@ -219,6 +231,7 @@ class _PasswordState extends State<PasswordScreen> {
                               builder: (context) => Intro(userDetails)),
                           (route) => false);
                     }).onError((error, stackTrace) {
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('${error.toString()}')));
                     });

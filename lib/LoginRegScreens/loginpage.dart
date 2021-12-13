@@ -136,6 +136,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40))),
                 onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+                    duration: new Duration(seconds: 4),
+                    content: new Row(
+                      children: <Widget>[
+                        new CircularProgressIndicator(),
+                        new Text("  Signing-In...")
+                      ],
+                    ),
+                  ));
                   dbRef
                       .reference()
                       .orderByChild("mobile")
@@ -143,6 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       .get()
                       .then((value) {
                     if (value.value == null) {
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('No User Found')));
                       return;
@@ -151,7 +161,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     print("User Password ${value.value}");
                     Map data = value.value;
                     data.forEach((key, value) async {
-                      if (_controller.text.length < 9) {
+                      if (_controller.text.length < 9 &&
+                          _controller.text != "") {
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
                           'Please verify your phone number !',
@@ -160,6 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         )));
                       } else if (_passwordcontroller.text == "" ||
                           _controller.text == "") {
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
                           'Password or Phone number is empty !',
@@ -173,12 +186,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             await SharedPreferences.getInstance();
                         prefs.setString('mobile', value['mobile']);
 
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Home(value)),
                             (route) => false);
                       } else {
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
                           'Incorrect username or password !',
