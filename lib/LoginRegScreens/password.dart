@@ -21,6 +21,7 @@ class _PasswordState extends State<PasswordScreen> {
   final TextEditingController _passwordControllerC = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   var _passwordVisible;
+  var _passwordVisible1;
   var _obscureText;
   var _obscureText1;
   @override
@@ -152,14 +153,14 @@ class _PasswordState extends State<PasswordScreen> {
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _passwordVisible
+                        _passwordVisible1
                             ? Icons.visibility
                             : Icons.visibility_off,
                         color: Colors.deepOrangeAccent.shade100,
                       ),
                       onPressed: () {
                         setState(() {
-                          _passwordVisible = !_passwordVisible;
+                          _passwordVisible1 = !_passwordVisible1;
                           _obscureText1 = !_obscureText1;
                         });
                       },
@@ -252,6 +253,7 @@ class _PasswordState extends State<PasswordScreen> {
   @override
   void initState() {
     _passwordVisible = false;
+    _passwordVisible1 = false;
     _obscureText = true;
     _obscureText1 = true;
     // TODO: implement initState
