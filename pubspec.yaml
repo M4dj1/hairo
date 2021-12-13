@@ -43,6 +43,16 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_native_splash: ^1.3.2
+
+
+
+flutter_native_splash:
+  color: "#051821"
+  image: assets/images/splashlogo.png
+  android: true
+  ios: true
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -52,11 +62,7 @@ flutter:
   assets:
   - assets/images/logo.png
   - assets/images/smartphone.png
-  - assets/images/flutter.png
-  - assets/images/fullscreen.jpg
-  - assets/images/img1.jpg
-  - assets/images/img2.jpg
-  - assets/images/img3.jpg
+  - assets/images/splashlogo.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

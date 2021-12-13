@@ -69,8 +69,26 @@ class _RegistartionState extends State<Registartion> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40))),
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => OTPScreen(_controller.text)));
+                  if (_controller.text.length < 9 && _controller.text != "") {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                      'Please verify your phone number !',
+                      style: TextStyle(color: Colors.red.shade600),
+                      textAlign: TextAlign.center,
+                    )));
+                  } else if (_controller.text == "") {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                      'Phone number is empty !',
+                      style: TextStyle(color: Colors.red.shade600),
+                      textAlign: TextAlign.center,
+                    )));
+                  } else {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => OTPScreen(_controller.text)));
+                  }
                 },
                 child: Text(
                   'Next',
