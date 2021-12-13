@@ -134,7 +134,7 @@ class _HomeState extends State<Home> {
         ),
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.orangeAccent,
+              backgroundColor: Color(0xff051821),
               leading: IconButton(
                 onPressed: _handleMenuButtonPressed,
                 icon: ValueListenableBuilder<AdvancedDrawerValue>(
@@ -145,15 +145,23 @@ class _HomeState extends State<Home> {
                       child: Icon(
                         value.visible ? Icons.clear : Icons.menu,
                         key: ValueKey<bool>(value.visible),
+                        color: Colors.orangeAccent,
                       ),
                     );
                   },
                 ),
               ),
-              title: Text('Barbers Map'),
+              centerTitle: true,
+              title: Text(
+                'Barbers Map',
+                style: TextStyle(
+                  color: Colors.orangeAccent,
+                ),
+              ),
               actions: [
                 IconButton(
                   icon: Icon(Icons.logout),
+                  color: Colors.orangeAccent,
                   onPressed: () async {
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -137,11 +135,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(40))),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-                    duration: new Duration(seconds: 4),
+                    duration: new Duration(seconds: 60),
                     content: new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        new CircularProgressIndicator(),
-                        new Text("  Signing-In...")
+                        new CircularProgressIndicator(
+                          color: Colors.orangeAccent,
+                        ),
+                        new Text(
+                          "    Signing-In...",
+                          style: TextStyle(color: Colors.orangeAccent),
+                        )
                       ],
                     ),
                   ));

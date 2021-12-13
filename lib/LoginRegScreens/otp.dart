@@ -45,14 +45,18 @@ class _OTPScreenState extends State<OTPScreen> {
             Padding(
               padding: const EdgeInsets.all(40.0),
               child: PinCodeTextField(
+                textStyle: TextStyle(color: Colors.white),
                 appContext: context,
                 length: 6,
                 obscureText: true,
                 obscuringCharacter: '*',
                 animationType: AnimationType.fade,
                 pinTheme: PinTheme(
+                  activeColor: Colors.green,
+                  inactiveColor: Colors.red,
+                  selectedColor: Colors.red,
                   shape: PinCodeFieldShape.box,
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(10),
                   fieldHeight: 50,
                   fieldWidth: 40,
                   activeFillColor: Colors.white,
@@ -167,21 +171,6 @@ class _OTPScreenState extends State<OTPScreen> {
         MaterialPageRoute(
             builder: (context) => PasswordScreen(widget.phone, uid)),
         (route) => false);
-
-    /*Map userDetails={
-      "mobile":widget.phone,
-      "password":"1234",
-    };
-
-    dbRef.child(uid).set(userDetails).then((value) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => Home(uid)),
-              (route) => false);
-    }).onError((error, stackTrace) {
-      _scaffoldkey.currentState!
-          .showSnackBar(SnackBar(content: Text('${error.toString()}')));
-    });*/
   }
 
   @override

@@ -188,9 +188,15 @@ class _PasswordState extends State<PasswordScreen> {
                   ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
                     duration: new Duration(seconds: 4),
                     content: new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        new CircularProgressIndicator(),
-                        new Text("  Signing-Up...")
+                        new CircularProgressIndicator(
+                          color: Colors.orangeAccent,
+                        ),
+                        new Text(
+                          "  Signing-Up...",
+                          style: TextStyle(color: Colors.orangeAccent),
+                        )
                       ],
                     ),
                   ));
