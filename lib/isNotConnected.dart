@@ -53,7 +53,7 @@ class _IsNotConnectedState extends State<IsNotConnected> {
               child: DefaultTextStyle(
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  color: Colors.red,
+                  color: Colors.orangeAccent,
                   fontSize: 20.0,
                   fontFamily: 'Agne',
                 ),

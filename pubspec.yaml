@@ -50,7 +50,7 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#051821"
-  image: assets/images/splashlogo.png
+  image: assets/images/splash.png
   android: true
   ios: true
   
@@ -63,7 +63,7 @@ flutter:
   assets:
   - assets/images/logo.png
   - assets/images/smartphone.png
-  - assets/images/splashlogo.png
+  - assets/images/splash.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
