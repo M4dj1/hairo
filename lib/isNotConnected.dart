@@ -39,7 +39,7 @@ class _IsNotConnectedState extends State<IsNotConnected> {
                 pause: Duration(milliseconds: 0),
                 repeatForever: true,
                 animatedTexts: [
-                  WavyAnimatedText('H a i r O',
+                  WavyAnimatedText('E C H A I R',
                       speed: Duration(milliseconds: 1000)),
                 ],
                 isRepeatingAnimation: true,

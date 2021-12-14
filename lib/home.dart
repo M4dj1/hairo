@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
                       pause: Duration(seconds: 5),
                       repeatForever: true,
                       animatedTexts: [
-                        WavyAnimatedText('H a i r O',
+                        WavyAnimatedText('E C H A I R',
                             speed: Duration(milliseconds: 100)),
                       ],
                       isRepeatingAnimation: true,

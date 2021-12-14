@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   pause: Duration(milliseconds: 0),
                   repeatForever: false,
                   animatedTexts: [
-                    WavyAnimatedText('H a i r O',
+                    WavyAnimatedText('E C H A I R',
                         speed: Duration(milliseconds: 100)),
                   ],
                   isRepeatingAnimation: true,
