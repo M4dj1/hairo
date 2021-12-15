@@ -53,7 +53,7 @@ class _PasswordState extends State<PasswordScreen> {
                 animationDuration: 400,
                 animate: true,
                 minWidth: 100.0,
-                initialLabelIndex: 0,
+                initialLabelIndex: null,
                 cornerRadius: 20.0,
                 activeFgColor: Colors.orangeAccent,
                 inactiveBgColor: Color(0xff051821),
@@ -200,21 +200,39 @@ class _PasswordState extends State<PasswordScreen> {
                       ],
                     ),
                   ));
-                  if (_nameController.text.length < 6) {
+                  if (gendController == "") {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                      'Please select your gender',
+                      style: TextStyle(color: Colors.red.shade600),
+                      textAlign: TextAlign.center,
+                    )));
+                  } else if (_nameController.text.length < 6) {
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('Name should be minimum 6 characters')));
+                        content: Text(
+                      'Name should be minimum 6 characters',
+                      style: TextStyle(color: Colors.red.shade600),
+                      textAlign: TextAlign.center,
+                    )));
                     return;
                   } else if (_passwordController.text.length < 6) {
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content:
-                            Text('Password should be minimum 6 characters')));
+                        content: Text(
+                      'Password should be minimum 6 characters',
+                      style: TextStyle(color: Colors.red.shade600),
+                      textAlign: TextAlign.center,
+                    )));
                   } else if (_passwordControllerC.text !=
                       _passwordController.text) {
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Passwords Dont match')));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                      'Passwords Dont match',
+                      style: TextStyle(color: Colors.red.shade600),
+                      textAlign: TextAlign.center,
+                    )));
                     _passwordControllerC.text = "";
                     _passwordController.text = "";
                   } else {
