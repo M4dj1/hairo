@@ -31,8 +31,8 @@ class _MapsState extends State<Maps> {
   Widget build(BuildContext context) {
     return FlutterMap(
       options: MapOptions(
-        center: LatLng(0, 0),
-        zoom: 13,
+        center: LatLng(35.2078434, 3.4318793),
+        zoom: 14,
         minZoom: 8.5,
         maxZoom: 17.0,
         // Stop centering the location marker on the map if user interacted with the map.
@@ -87,7 +87,7 @@ class _MapsState extends State<Maps> {
               setState(() =>
                   _centerOnLocationUpdate = CenterOnLocationUpdate.always);
               // Center the location marker on the map and zoom the map to level 18.
-              _centerCurrentLocationStreamController.add(15.0);
+              _centerCurrentLocationStreamController.add(16.0);
             },
             child: Icon(
               Icons.my_location,
