@@ -89,8 +89,8 @@ class _OTPScreenState extends State<OTPScreen> {
               alignment: Alignment.center,
               children: [
                 Container(
-                    height: 150,
-                    width: 150,
+                    height: 130,
+                    width: 130,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(
