@@ -38,7 +38,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 26,
-                      color: Colors.white),
+                      color: Colors.orangeAccent),
                 ),
               ),
             ),

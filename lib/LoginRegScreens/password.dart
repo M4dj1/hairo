@@ -37,11 +37,11 @@ class _PasswordState extends State<PasswordScreen> {
             Container(
               child: Center(
                 child: Text(
-                  'User Info',
+                  'Sign Up',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 28,
-                      color: Colors.deepOrangeAccent.shade700),
+                      fontSize: 26,
+                      color: Colors.orangeAccent),
                 ),
               ),
             ),
@@ -55,9 +55,9 @@ class _PasswordState extends State<PasswordScreen> {
                 minWidth: 100.0,
                 initialLabelIndex: null,
                 cornerRadius: 20.0,
-                activeFgColor: Colors.orangeAccent,
+                activeFgColor: Colors.white,
                 inactiveBgColor: Color(0xff051821),
-                inactiveFgColor: Colors.orangeAccent,
+                inactiveFgColor: Colors.deepOrangeAccent.shade100,
                 borderColor: [Color(0xff0d3d54)],
                 totalSwitches: 2,
                 labels: ['Male', 'Female'],

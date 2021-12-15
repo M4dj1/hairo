@@ -21,11 +21,11 @@ class _RegistartionState extends State<Registartion> {
                 margin: EdgeInsets.only(top: 100),
                 child: Center(
                   child: Text(
-                    'Sign Up',
+                    'Enter your Phone number',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 28,
-                        color: Colors.white),
+                        fontSize: 26,
+                        color: Colors.orangeAccent),
                   ),
                 ),
               ),
