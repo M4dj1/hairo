@@ -12,8 +12,8 @@ import 'package:hairo/Screens/profile.dart';
 import 'package:hairo/Screens/about.dart';
 
 class Home extends StatefulWidget {
-  String uid;
-  Home(this.uid);
+  Map userValues;
+  Home(this.userValues);
   @override
   _HomeState createState() => _HomeState();
 }
@@ -240,7 +240,7 @@ class _HomeState extends State<Home> {
         );
       case 1:
         return Container(
-          child: Profile(widget.uid),
+          child: Profile(widget.userValues),
         );
       case 2:
         return Container(

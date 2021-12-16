@@ -193,7 +193,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         Navigator.pushAndRemoveUntil(
                             context,
-                            MaterialPageRoute(builder: (context) => Home(key)),
+                            MaterialPageRoute(
+                                builder: (context) => Home(value)),
                             (route) => false);
                       } else {
                         ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -244,10 +245,13 @@ class _LoginScreenState extends State<LoginScreen> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? uid = prefs.getString('uid');
       if (uid != null) {
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => Home(uid)),
-            (route) => false);
+        dbRef.child(uid).once().then((DataSnapshot snapshot) {
+          Map<dynamic, dynamic> userValues = snapshot.value;
+          runApp(MaterialApp(
+            home: Home(userValues),
+            theme: ThemeData(scaffoldBackgroundColor: Color(0xff051821)),
+          ));
+        });
       }
     });
   }

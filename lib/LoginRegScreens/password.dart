@@ -241,6 +241,7 @@ class _PasswordState extends State<PasswordScreen> {
                       "password": _passwordController.text,
                       "name": _nameController.text,
                       "gender": gendController,
+                      "uid": widget.uid,
                     };
                     dbRef
                         .child(widget.uid)
@@ -252,7 +253,7 @@ class _PasswordState extends State<PasswordScreen> {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Intro(widget.uid)),
+                              builder: (context) => Intro(userDetails)),
                           (route) => false);
                     }).onError((error, stackTrace) {
                       ScaffoldMessenger.of(context).hideCurrentSnackBar();
