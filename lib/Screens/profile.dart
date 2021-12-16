@@ -12,6 +12,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   String name = '';
   String mobile = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,9 +133,16 @@ class _ProfileState extends State<Profile> {
   @override
   void initState() {
     super.initState();
+
     dbRef.child(widget.uid).once().then((DataSnapshot snapshot) {
-      name = snapshot.value['name'];
-      mobile = snapshot.value['mobile'];
+      setState(() {
+        name = snapshot.value['name'];
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        mobile = snapshot.value['mobile'];
+        if (mobile.substring(0, 1) != '0') {
+          mobile = '0' + mobile;
+        }
+      });
     });
   }
 }
