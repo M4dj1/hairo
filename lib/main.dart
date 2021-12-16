@@ -14,15 +14,12 @@ Future<void> main() async {
       WidgetsFlutterBinding.ensureInitialized();
       await Firebase.initializeApp();
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      var mobile = prefs.getString('mobile');
-      if (mobile != null) {
-        dbRef.child(mobile).once().then((DataSnapshot snapshot) {
-          Map<dynamic, dynamic> userValues = snapshot.value;
-          runApp(MaterialApp(
-            home: Home(userValues),
-            theme: ThemeData(scaffoldBackgroundColor: Color(0xff051821)),
-          ));
-        });
+      String? uid = prefs.getString('uid');
+      if (uid != null) {
+        runApp(MaterialApp(
+          home: Home(uid),
+          theme: ThemeData(scaffoldBackgroundColor: Color(0xff051821)),
+        ));
       } else {
         runApp(MaterialApp(
           home: LoginScreen(),

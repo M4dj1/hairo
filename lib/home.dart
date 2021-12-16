@@ -12,8 +12,8 @@ import 'package:hairo/Screens/profile.dart';
 import 'package:hairo/Screens/about.dart';
 
 class Home extends StatefulWidget {
-  Map userValues;
-  Home(this.userValues);
+  String uid;
+  Home(this.uid);
   @override
   _HomeState createState() => _HomeState();
 }
@@ -205,7 +205,7 @@ class _HomeState extends State<Home> {
               color: Colors.orangeAccent,
               onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
-                prefs.remove('mobile');
+                prefs.remove('uid');
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => LoginScreen()),
@@ -240,7 +240,7 @@ class _HomeState extends State<Home> {
         );
       case 1:
         return Container(
-          child: Profile(),
+          child: Profile(widget.uid),
         );
       case 2:
         return Container(

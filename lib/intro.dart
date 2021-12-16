@@ -4,8 +4,8 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'home.dart';
 
 class Intro extends StatefulWidget {
-  Map userValues;
-  Intro(this.userValues);
+  String uid;
+  Intro(this.uid);
   @override
   _OnBoardingPageState createState() => _OnBoardingPageState();
 }
@@ -15,7 +15,7 @@ class _OnBoardingPageState extends State<Intro> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => Home(widget.userValues)),
+      MaterialPageRoute(builder: (_) => Home(widget.uid)),
     );
   }
 

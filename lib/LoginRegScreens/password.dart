@@ -237,23 +237,22 @@ class _PasswordState extends State<PasswordScreen> {
                     _passwordController.text = "";
                   } else {
                     Map userDetails = {
-                      "uid": widget.uid,
                       "mobile": widget.phone,
                       "password": _passwordController.text,
                       "name": _nameController.text,
                       "gender": gendController,
                     };
                     dbRef
-                        .child(widget.phone)
+                        .child(widget.uid)
                         .set(userDetails)
                         .then((value) async {
                       SharedPreferences prefs =
                           await SharedPreferences.getInstance();
-                      prefs.setString('mobile', widget.phone);
+                      prefs.setString('uid', widget.uid);
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Intro(userDetails)),
+                              builder: (context) => Intro(widget.uid)),
                           (route) => false);
                     }).onError((error, stackTrace) {
                       ScaffoldMessenger.of(context).hideCurrentSnackBar();

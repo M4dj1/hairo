@@ -188,13 +188,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           (_controller.text == value['mobile'])) {
                         SharedPreferences prefs =
                             await SharedPreferences.getInstance();
-                        prefs.setString('mobile', value['mobile']);
+                        prefs.setString('uid', key);
 
                         ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         Navigator.pushAndRemoveUntil(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => Home(value)),
+                            MaterialPageRoute(builder: (context) => Home(key)),
                             (route) => false);
                       } else {
                         ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -243,15 +242,12 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      var mobile = prefs.getString('mobile');
-      if (mobile != null) {
-        dbRef.child(mobile).once().then((DataSnapshot snapshot) {
-          Map<dynamic, dynamic> userValues = snapshot.value;
-          Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => Home(userValues)),
-              (route) => false);
-        });
+      String? uid = prefs.getString('uid');
+      if (uid != null) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => Home(uid)),
+            (route) => false);
       }
     });
   }
