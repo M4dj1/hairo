@@ -10,6 +10,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   String name = '';
   String mobile = '';
+  String gend = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,30 +51,30 @@ class _ProfileState extends State<Profile> {
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Color(0xff115170),
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: Colors.orange.shade300,
+            color: Colors.orange.shade500,
             child: ListTile(
               title: Text(
                 mobile,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  color: Colors.deepOrangeAccent.shade200,
+                  fontSize: 24,
+                  color: Color(0xFF0d3d54),
                 ),
               ),
               subtitle: Text(
-                'My Phone Number',
+                'My Phone Number\n(Only Salons can see your number)',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.white70,
+                  color: Colors.black45,
                 ),
               ),
             ),
@@ -82,20 +83,64 @@ class _ProfileState extends State<Profile> {
             color: Colors.orange.shade400,
             child: ListTile(
               title: Text(
+                gend,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Color(0xFF0d3d54),
+                ),
+              ),
+              subtitle: Text(
+                'Gender',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black45,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            color: Colors.orange.shade300,
+            child: ListTile(
+              title: Text(
+                '4',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Color(0xFF0d3d54),
+                ),
+              ),
+              subtitle: Text(
+                'Visited Salons',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black45,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            color: Colors.orange.shade200,
+            child: ListTile(
+              title: Text(
                 '43 Days',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  color: Colors.deepOrangeAccent.shade200,
+                  fontSize: 24,
+                  color: Color(0xFF0d3d54),
                 ),
               ),
               subtitle: Text(
-                'Since Last Session',
+                'Since My Last Session\n "Haircut"',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.white70,
+                  color: Colors.black45,
                 ),
               ),
             ),
@@ -108,6 +153,7 @@ class _ProfileState extends State<Profile> {
   @override
   void initState() {
     super.initState();
+    gend = widget.userValues['gender'];
     name = widget.userValues['name'].toString().substring(0, 1).toUpperCase() +
         widget.userValues['name'].toString().substring(1);
     if (widget.userValues['mobile'].toString().substring(0, 1) != '0') {
