@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:hairo/Icon/echair_icons.dart';
 
 class Maps extends StatefulWidget {
   @override
@@ -65,12 +66,12 @@ class _MapsState extends State<Maps> {
             marker: DefaultLocationMarker(
               color: Color(0xff051821),
               child: Icon(
-                Icons.person,
+                Echair.positionmarker,
                 color: Colors.orangeAccent,
-                size: 20,
+                size: 25,
               ),
             ),
-            markerSize: const Size(25, 25),
+            markerSize: const Size(30, 30),
             accuracyCircleColor: Color(0xff051821).withOpacity(0.1),
             headingSectorColor: Color(0xff051821).withOpacity(0.8),
             headingSectorRadius: 70,

@@ -111,3 +111,7 @@ flutter:
     - family: Horizon
       fonts:
         - asset: assets/fonts/Horizon.otf
+
+    - family:  Echair
+      fonts:
+        - asset: assets/fonts/Echair.ttf
