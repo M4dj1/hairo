@@ -239,7 +239,7 @@ class _PasswordState extends State<PasswordScreen> {
                     Map userDetails = {
                       "mobile": widget.phone,
                       "password": _passwordController.text,
-                      "name": _nameController.text,
+                      "name": _nameController.text.toLowerCase(),
                       "gender": gendController,
                       "uid": widget.uid,
                     };
