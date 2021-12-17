@@ -18,14 +18,7 @@ class _ProfileState extends State<Profile> {
         children: <Widget>[
           Container(
             height: 250,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xfff58800), Color(0xfff8bc24)],
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                stops: [0.5, 0.9],
-              ),
-            ),
+            color: Color(0xff115170),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +44,7 @@ class _ProfileState extends State<Profile> {
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xff115170),
+                    color: Color(0xfff58800),
                   ),
                 ),
               ],
@@ -59,13 +52,13 @@ class _ProfileState extends State<Profile> {
           ),
           Flexible(
             child: Container(
-              color: Colors.orange.shade600,
+              color: Color(0xff115170),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.vpn_lock,
-                      color: Color(0xff115170),
+                      color: Colors.deepOrangeAccent.shade100,
                     ),
                     ListTile(
                       title: Text(
@@ -74,7 +67,7 @@ class _ProfileState extends State<Profile> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24,
-                          color: Color(0xFF0d3d54),
+                          color: Color(0xfff58800),
                         ),
                       ),
                       subtitle: Text(
@@ -91,13 +84,13 @@ class _ProfileState extends State<Profile> {
           ),
           Flexible(
             child: Container(
-              color: Colors.orange.shade500,
+              color: Color(0xff115170),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.vpn_lock,
-                      color: Color(0xff115170),
+                      color: Colors.deepOrangeAccent.shade100,
                     ),
                     ListTile(
                       title: Text(
@@ -106,7 +99,7 @@ class _ProfileState extends State<Profile> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24,
-                          color: Color(0xFF0d3d54),
+                          color: Color(0xfff58800),
                         ),
                       ),
                       subtitle: Text(
@@ -123,13 +116,13 @@ class _ProfileState extends State<Profile> {
           ),
           Flexible(
             child: Container(
-              color: Colors.orange.shade400,
+              color: Color(0xff115170),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.public,
-                      color: Color(0xff115170),
+                      color: Colors.deepOrangeAccent.shade100,
                     ),
                     ListTile(
                       title: Text(
@@ -138,7 +131,7 @@ class _ProfileState extends State<Profile> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24,
-                          color: Color(0xFF0d3d54),
+                          color: Color(0xfff58800),
                         ),
                       ),
                       subtitle: Text(
@@ -155,13 +148,13 @@ class _ProfileState extends State<Profile> {
           ),
           Flexible(
             child: Container(
-              color: Colors.orange.shade300,
+              color: Color(0xff115170),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.public,
-                      color: Color(0xff115170),
+                      color: Colors.deepOrangeAccent.shade100,
                     ),
                     ListTile(
                       title: Text(
@@ -170,7 +163,7 @@ class _ProfileState extends State<Profile> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24,
-                          color: Color(0xFF0d3d54),
+                          color: Color(0xfff58800),
                         ),
                       ),
                       subtitle: Text(
