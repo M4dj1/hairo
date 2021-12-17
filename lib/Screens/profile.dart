@@ -19,9 +19,6 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
         body: Column(
       children: <Widget>[
-        SizedBox(
-          height: 8.0,
-        ),
         Column(
           children: <Widget>[
             Padding(
@@ -87,12 +84,12 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                       Text(
-                        'Sessions',
+                        'Used',
                         style: TextStyle(
                             color: Colors.orangeAccent.withOpacity(0.7)),
                       ),
                       Text(
-                        'took',
+                        'Echairs',
                         style: TextStyle(
                             color: Colors.orangeAccent.withOpacity(0.7)),
                       )
@@ -109,12 +106,12 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                       Text(
-                        'Days since last',
+                        'Days since',
                         style: TextStyle(
                             color: Colors.orangeAccent.withOpacity(0.7)),
                       ),
                       Text(
-                        'last Session',
+                        'last Echair',
                         style: TextStyle(
                             color: Colors.orangeAccent.withOpacity(0.7)),
                       )
@@ -136,7 +133,7 @@ class _ProfileState extends State<Profile> {
                             color: Colors.orangeAccent.withOpacity(0.7)),
                       ),
                       Text(
-                        'salon',
+                        'Esalon',
                         style: TextStyle(
                             color: Colors.orangeAccent.withOpacity(0.7)),
                       )
@@ -151,55 +148,69 @@ class _ProfileState extends State<Profile> {
           height: 32.0,
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            children: <Widget>[
-              Divider(
-                height: 8.0,
-              ),
-              ListTile(
-                title: Text(
-                  "Profile",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Color(0xff0887c4),
-                      fontWeight: FontWeight.bold),
-                ),
-                trailing: ClipOval(
-                  child: Container(
-                      height: 40.0,
-                      width: 40.0,
-                      color: Colors.orangeAccent.withOpacity(0.2),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.edit),
-                        color: Colors.orangeAccent,
-                      )),
-                ),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-                child: Container(
-                  height: 200.0,
-                  child: ListView(
-                    padding: EdgeInsets.all(0.0),
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      ItemCard(Icons.face, 'Name', name),
-                      ItemCard(Icons.lock_outline, 'Password', '******'),
-                      ItemCard(Icons.male, 'Gender', gend),
-                      ItemCard(
-                          Icons.mobile_friendly_outlined, 'Number', mobile),
-                    ],
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [Color(0xfff58800), Color(0xfff8bc24)]),
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              child: Column(
+                children: <Widget>[
+                  Divider(
+                    height: 8.0,
                   ),
-                ),
-              )
-            ],
-          ),
-        ),
+                  ListTile(
+                    title: Text(
+                      "Profile",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Color(0xff0887c4),
+                          fontWeight: FontWeight.bold),
+                    ),
+                    trailing: ClipOval(
+                      child: Container(
+                          height: 40.0,
+                          width: 40.0,
+                          color: Color(0xff115170).withOpacity(0.2),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.edit),
+                            color: Color(0xff115170),
+                          )),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                    child: Container(
+                        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            ItemCard(Icons.face, 'Name', name),
+                            ItemCard(Icons.lock_outline, 'Password', '******'),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            ItemCard(Icons.male, 'Gender', gend),
+                            ItemCard(Icons.mobile_friendly_outlined, 'Number',
+                                mobile),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 8.0,
+                        ),
+                      ],
+                    )),
+                  )
+                ],
+              ),
+            )),
         Spacer(),
       ],
     ));
@@ -227,10 +238,10 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
+      padding: const EdgeInsets.all(5.0),
       child: Container(
-        height: 160.0,
-        width: 120.0,
+        height: 120.0,
+        width: 160.0,
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topRight,
