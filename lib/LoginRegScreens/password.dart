@@ -250,6 +250,7 @@ class _PasswordState extends State<PasswordScreen> {
                       SharedPreferences prefs =
                           await SharedPreferences.getInstance();
                       prefs.setString('uid', widget.uid);
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(

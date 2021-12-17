@@ -18,6 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   var _passwordVisible;
   var _obscureText;
+  var isFound = false;
 
   @override
   Widget build(BuildContext context) {
@@ -134,79 +135,84 @@ class _LoginScreenState extends State<LoginScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40))),
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-                    duration: new Duration(seconds: 60),
-                    content: new Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new CircularProgressIndicator(
-                          color: Colors.orangeAccent,
-                        ),
-                        new Text(
-                          "    Signing-In...",
-                          style: TextStyle(color: Colors.orangeAccent),
-                        )
-                      ],
-                    ),
-                  ));
-                  dbRef
-                      .reference()
-                      .orderByChild("mobile")
-                      .equalTo(_controller.text)
-                      .get()
-                      .then((value) {
-                    if (value.value == null) {
-                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('No User Found')));
-                      return;
-                    }
-
-                    print("User Password ${value.value}");
-                    Map data = value.value;
-                    data.forEach((key, value) async {
-                      if (_controller.text.length < 9 &&
-                          _controller.text != "") {
+                  if (_controller.text.length < 9 && _controller.text != "") {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                      'Please verify your phone number !',
+                      style: TextStyle(color: Colors.red.shade600),
+                      textAlign: TextAlign.center,
+                    )));
+                  } else if (_passwordcontroller.text == "" ||
+                      _controller.text == "") {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                      'Password or Phone number is empty !',
+                      style: TextStyle(color: Colors.red.shade600),
+                      textAlign: TextAlign.center,
+                    )));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+                      duration: new Duration(seconds: 60),
+                      content: new Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new CircularProgressIndicator(
+                            color: Colors.orangeAccent,
+                          ),
+                          new Text(
+                            "    Signing-In...",
+                            style: TextStyle(color: Colors.orangeAccent),
+                          )
+                        ],
+                      ),
+                    ));
+                    dbRef
+                        .reference()
+                        .orderByChild("mobile")
+                        .equalTo(_controller.text)
+                        .once()
+                        .then((value) {
+                      if (value.value == null) {
                         ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
-                          'Please verify your phone number !',
+                          'Phone number is not registered!',
                           style: TextStyle(color: Colors.red.shade600),
                           textAlign: TextAlign.center,
                         )));
-                      } else if (_passwordcontroller.text == "" ||
-                          _controller.text == "") {
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                          'Password or Phone number is empty !',
-                          style: TextStyle(color: Colors.red.shade600),
-                          textAlign: TextAlign.center,
-                        )));
-                      } else if (_passwordcontroller.text ==
-                              value['password'] &&
-                          (_controller.text == value['mobile'])) {
-                        SharedPreferences prefs =
-                            await SharedPreferences.getInstance();
-                        prefs.setString('uid', key);
-
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Home(value)),
-                            (route) => false);
+                        return; //find out why ?
                       } else {
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                          'Incorrect username or password !',
-                          style: TextStyle(color: Colors.red.shade600),
-                          textAlign: TextAlign.center,
-                        )));
+                        Map data = value.value;
+                        data.forEach((key, value) async {
+                          if (_passwordcontroller.text == value['password'] &&
+                              _controller.text == value['mobile']) {
+                            isFound = true;
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            prefs.setString('uid', key);
+
+                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home(value)),
+                                (route) => false);
+                          }
+                        });
+                        if (isFound == false) {
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(
+                            'Incorrect username or password !',
+                            style: TextStyle(color: Colors.red.shade600),
+                            textAlign: TextAlign.center,
+                          )));
+                        }
                       }
                     });
-                  });
+                  }
                 },
                 child: Text(
                   'Login',
