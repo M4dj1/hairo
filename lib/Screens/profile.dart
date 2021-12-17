@@ -7,6 +7,9 @@ class Profile extends StatefulWidget {
   _ProfileState createState() => _ProfileState();
 }
 
+var color1 = Color(0xff115170);
+var color2 = Color(0xFF0d3d54);
+
 class _ProfileState extends State<Profile> {
   String name = '';
   String mobile = '';
@@ -14,173 +17,198 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Container(
-            height: 250,
-            color: Color(0xff115170),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundColor: Colors.white70,
-                      minRadius: 60.0,
-                      child: CircleAvatar(
-                        radius: 50.0,
-                        backgroundImage: AssetImage('assets/images/logo.png'),
-                      ),
+        body: Column(
+      children: <Widget>[
+        SizedBox(
+          height: 8.0,
+        ),
+        Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(32.0),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  CircleAvatar(
+                    radius: 50.0,
+                    backgroundImage: AssetImage('assets/images/logo.png'),
+                  ),
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  Text(
+                    name,
+                    style: TextStyle(
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.orangeAccent,
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  name,
+                  ),
+                  SizedBox(
+                    height: 4.0,
+                  ),
+                  Text(
+                    '<' + mobile + '>',
+                    style: TextStyle(
+                        color:
+                            Colors.deepOrangeAccent.shade100.withOpacity(0.7)),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 32.0, right: 32),
+              child: Container(
+                height: 4.0,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [color1, color2])),
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 32.0, right: 48.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        '0',
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          color: Colors.deepOrangeAccent.shade200,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'Sessions',
+                        style: TextStyle(
+                            color: Colors.orangeAccent.withOpacity(0.7)),
+                      ),
+                      Text(
+                        'took',
+                        style: TextStyle(
+                            color: Colors.orangeAccent.withOpacity(0.7)),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        '?',
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          color: Colors.deepOrangeAccent.shade200,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'Days since last',
+                        style: TextStyle(
+                            color: Colors.orangeAccent.withOpacity(0.7)),
+                      ),
+                      Text(
+                        'last Session',
+                        style: TextStyle(
+                            color: Colors.orangeAccent.withOpacity(0.7)),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        '0',
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          color: Colors.deepOrangeAccent.shade200,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'Reached',
+                        style: TextStyle(
+                            color: Colors.orangeAccent.withOpacity(0.7)),
+                      ),
+                      Text(
+                        'goals',
+                        style: TextStyle(
+                            color: Colors.orangeAccent.withOpacity(0.7)),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+        SizedBox(
+          height: 32.0,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            children: <Widget>[
+              Divider(
+                height: 8.0,
+              ),
+              ListTile(
+                title: Text(
+                  "Today's activity",
                   style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xfff58800),
+                    fontSize: 20,
+                    color: Color(0xff0887c4),
                   ),
                 ),
-              ],
-            ),
+                subtitle: Text(
+                  '31 tasks in 5 categories',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.deepOrangeAccent.shade100.withOpacity(0.7),
+                  ),
+                ),
+                trailing: ClipOval(
+                  child: Container(
+                      height: 40.0,
+                      width: 40.0,
+                      color: Colors.orangeAccent.withOpacity(0.2),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.add),
+                        color: Colors.orangeAccent,
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                child: Container(
+                  height: 160.0,
+                  child: ListView(
+                    padding: EdgeInsets.all(0.0),
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      ItemCard(Icons.favorite, 'Health', '2 tasks'),
+                      ItemCard(Icons.person, 'Personal', '3 tasks'),
+                      ItemCard(Icons.power, 'Power', '4 tasks'),
+                      ItemCard(Icons.power, 'Power', '4 tasks'),
+                      ItemCard(Icons.power, 'Power', '4 tasks'),
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
-          Flexible(
-            child: Container(
-              color: Color(0xff115170),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.vpn_lock,
-                      color: Colors.deepOrangeAccent.shade100,
-                    ),
-                    ListTile(
-                      title: Text(
-                        mobile,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Color(0xfff58800),
-                        ),
-                      ),
-                      subtitle: Text(
-                        '(Only Salons can see your number)',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.redAccent.shade200,
-                        ),
-                      ),
-                    ),
-                  ]),
-            ),
-          ),
-          Flexible(
-            child: Container(
-              color: Color(0xff115170),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.vpn_lock,
-                      color: Colors.deepOrangeAccent.shade100,
-                    ),
-                    ListTile(
-                      title: Text(
-                        '43 Days',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Color(0xfff58800),
-                        ),
-                      ),
-                      subtitle: Text(
-                        'Since My Last "Haircut"',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.redAccent.shade200,
-                        ),
-                      ),
-                    ),
-                  ]),
-            ),
-          ),
-          Flexible(
-            child: Container(
-              color: Color(0xff115170),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.public,
-                      color: Colors.deepOrangeAccent.shade100,
-                    ),
-                    ListTile(
-                      title: Text(
-                        gend,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Color(0xfff58800),
-                        ),
-                      ),
-                      subtitle: Text(
-                        'Gender',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.redAccent.shade200,
-                        ),
-                      ),
-                    ),
-                  ]),
-            ),
-          ),
-          Flexible(
-            child: Container(
-              color: Color(0xff115170),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.public,
-                      color: Colors.deepOrangeAccent.shade100,
-                    ),
-                    ListTile(
-                      title: Text(
-                        '4',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Color(0xfff58800),
-                        ),
-                      ),
-                      subtitle: Text(
-                        'Visited Salons',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.redAccent.shade200,
-                        ),
-                      ),
-                    ),
-                  ]),
-            ),
-          ),
-        ],
-      ),
-    );
+        ),
+        Spacer(),
+      ],
+    ));
   }
 
   @override
@@ -194,5 +222,54 @@ class _ProfileState extends State<Profile> {
     } else {
       mobile = widget.userValues['mobile'].toString();
     }
+  }
+}
+
+class ItemCard extends StatelessWidget {
+  final icon;
+  final name;
+  final tasks;
+  const ItemCard(this.icon, this.name, this.tasks);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0),
+      child: Container(
+        height: 160.0,
+        width: 120.0,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [color1, color2])),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Icon(
+                icon,
+                color: Colors.deepOrangeAccent.shade100,
+              ),
+              Spacer(),
+              Text(
+                name,
+                style: TextStyle(
+                    color: Colors.deepOrangeAccent.shade100,
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 4.0,
+              ),
+              Text(
+                tasks,
+                style: TextStyle(
+                    color: Colors.deepOrangeAccent.shade100.withOpacity(0.6)),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
