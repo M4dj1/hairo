@@ -14,7 +14,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: Column(
         children: <Widget>[
           Container(
             height: 250,
@@ -57,92 +57,132 @@ class _ProfileState extends State<Profile> {
               ],
             ),
           ),
-          Container(
-            color: Colors.orange.shade500,
-            child: ListTile(
-              title: Text(
-                mobile,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  color: Color(0xFF0d3d54),
-                ),
-              ),
-              subtitle: Text(
-                'My Phone Number\n(Only Salons can see your number)',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black45,
-                ),
-              ),
+          Flexible(
+            child: Container(
+              color: Colors.orange.shade600,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.vpn_lock,
+                      color: Color(0xff115170),
+                    ),
+                    ListTile(
+                      title: Text(
+                        mobile,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Color(0xFF0d3d54),
+                        ),
+                      ),
+                      subtitle: Text(
+                        '(Only Salons can see your number)',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.redAccent.shade200,
+                        ),
+                      ),
+                    ),
+                  ]),
             ),
           ),
-          Container(
-            color: Colors.orange.shade400,
-            child: ListTile(
-              title: Text(
-                gend,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  color: Color(0xFF0d3d54),
-                ),
-              ),
-              subtitle: Text(
-                'Gender',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black45,
-                ),
-              ),
+          Flexible(
+            child: Container(
+              color: Colors.orange.shade500,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.vpn_lock,
+                      color: Color(0xff115170),
+                    ),
+                    ListTile(
+                      title: Text(
+                        '43 Days',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Color(0xFF0d3d54),
+                        ),
+                      ),
+                      subtitle: Text(
+                        'Since My Last "Haircut"',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.redAccent.shade200,
+                        ),
+                      ),
+                    ),
+                  ]),
             ),
           ),
-          Container(
-            color: Colors.orange.shade300,
-            child: ListTile(
-              title: Text(
-                '4',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  color: Color(0xFF0d3d54),
-                ),
-              ),
-              subtitle: Text(
-                'Visited Salons',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black45,
-                ),
-              ),
+          Flexible(
+            child: Container(
+              color: Colors.orange.shade400,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.public,
+                      color: Color(0xff115170),
+                    ),
+                    ListTile(
+                      title: Text(
+                        gend,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Color(0xFF0d3d54),
+                        ),
+                      ),
+                      subtitle: Text(
+                        'Gender',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.redAccent.shade200,
+                        ),
+                      ),
+                    ),
+                  ]),
             ),
           ),
-          Container(
-            color: Colors.orange.shade200,
-            child: ListTile(
-              title: Text(
-                '43 Days',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  color: Color(0xFF0d3d54),
-                ),
-              ),
-              subtitle: Text(
-                'Since My Last Session\n "Haircut"',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black45,
-                ),
-              ),
+          Flexible(
+            child: Container(
+              color: Colors.orange.shade300,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.public,
+                      color: Color(0xff115170),
+                    ),
+                    ListTile(
+                      title: Text(
+                        '4',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Color(0xFF0d3d54),
+                        ),
+                      ),
+                      subtitle: Text(
+                        'Visited Salons',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.redAccent.shade200,
+                        ),
+                      ),
+                    ),
+                  ]),
             ),
           ),
         ],
