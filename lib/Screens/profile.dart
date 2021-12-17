@@ -50,10 +50,11 @@ class _ProfileState extends State<Profile> {
                     height: 4.0,
                   ),
                   Text(
-                    '<' + mobile + '>',
+                    mobile,
                     style: TextStyle(
-                        color:
-                            Colors.deepOrangeAccent.shade100.withOpacity(0.7)),
+                      color: Colors.deepOrangeAccent.shade100.withOpacity(0.7),
+                      fontWeight: FontWeight.bold,
+                    ),
                   )
                 ],
               ),
@@ -122,7 +123,7 @@ class _ProfileState extends State<Profile> {
                   Column(
                     children: <Widget>[
                       Text(
-                        '0',
+                        '???',
                         style: TextStyle(
                           fontSize: 24.0,
                           color: Colors.deepOrangeAccent.shade200,
@@ -130,12 +131,12 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                       Text(
-                        'Reached',
+                        'Last',
                         style: TextStyle(
                             color: Colors.orangeAccent.withOpacity(0.7)),
                       ),
                       Text(
-                        'goals',
+                        'salon',
                         style: TextStyle(
                             color: Colors.orangeAccent.withOpacity(0.7)),
                       )
@@ -158,18 +159,11 @@ class _ProfileState extends State<Profile> {
               ),
               ListTile(
                 title: Text(
-                  "Today's activity",
+                  "Profile",
                   style: TextStyle(
-                    fontSize: 20,
-                    color: Color(0xff0887c4),
-                  ),
-                ),
-                subtitle: Text(
-                  '31 tasks in 5 categories',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.deepOrangeAccent.shade100.withOpacity(0.7),
-                  ),
+                      fontSize: 20,
+                      color: Color(0xff0887c4),
+                      fontWeight: FontWeight.bold),
                 ),
                 trailing: ClipOval(
                   child: Container(
@@ -178,7 +172,7 @@ class _ProfileState extends State<Profile> {
                       color: Colors.orangeAccent.withOpacity(0.2),
                       child: IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.add),
+                        icon: Icon(Icons.edit),
                         color: Colors.orangeAccent,
                       )),
                 ),
@@ -189,16 +183,16 @@ class _ProfileState extends State<Profile> {
               Padding(
                 padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                 child: Container(
-                  height: 160.0,
+                  height: 200.0,
                   child: ListView(
                     padding: EdgeInsets.all(0.0),
                     scrollDirection: Axis.horizontal,
                     children: <Widget>[
-                      ItemCard(Icons.favorite, 'Health', '2 tasks'),
-                      ItemCard(Icons.person, 'Personal', '3 tasks'),
-                      ItemCard(Icons.power, 'Power', '4 tasks'),
-                      ItemCard(Icons.power, 'Power', '4 tasks'),
-                      ItemCard(Icons.power, 'Power', '4 tasks'),
+                      ItemCard(Icons.face, 'Name', name),
+                      ItemCard(Icons.lock_outline, 'Password', '******'),
+                      ItemCard(Icons.male, 'Gender', gend),
+                      ItemCard(
+                          Icons.mobile_friendly_outlined, 'Number', mobile),
                     ],
                   ),
                 ),
@@ -241,7 +235,8 @@ class ItemCard extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [color1, color2])),
+                colors: [color1, color2]),
+            borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(

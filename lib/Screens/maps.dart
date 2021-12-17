@@ -33,7 +33,7 @@ class _MapsState extends State<Maps> {
     return FlutterMap(
       options: MapOptions(
         center: LatLng(35.2078434, 3.4318793),
-        zoom: 14,
+        zoom: 16,
         minZoom: 8.5,
         maxZoom: 17.0,
         // Stop centering the location marker on the map if user interacted with the map.
