@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:number_slide_animation/number_slide_animation.dart';
 
 class Profile extends StatefulWidget {
   Map userValues;
@@ -77,9 +78,11 @@ class _ProfileState extends State<Profile> {
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      Text(
-                        _intUsedEchairs.toString(),
-                        style: TextStyle(
+                      NumberSlideAnimation(
+                        number: _intUsedEchairs.toString(),
+                        duration: Duration(seconds: 2),
+                        curve: Curves.fastOutSlowIn,
+                        textStyle: TextStyle(
                           fontSize: 24.0,
                           color: Color(0xffff8215),
                           fontWeight: FontWeight.bold,
@@ -99,9 +102,11 @@ class _ProfileState extends State<Profile> {
                   ),
                   Column(
                     children: <Widget>[
-                      Text(
-                        _intDays.toString(),
-                        style: TextStyle(
+                      NumberSlideAnimation(
+                        number: _intDays.toString(),
+                        duration: Duration(seconds: 2),
+                        curve: Curves.fastOutSlowIn,
+                        textStyle: TextStyle(
                           fontSize: 24.0,
                           color: Color(0xffff8215),
                           fontWeight: FontWeight.bold,
