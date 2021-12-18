@@ -1,6 +1,7 @@
 غامق     -> Color(0xff051821)
 نص بنص   -> Color(0xFF0d3d54)
 فاتح     -> Color(0xff115170)
-تشيني   -> Color(0xfff58800) - Colors.orangeAccent ??
-تشيني فاتح -> Color(0xfff8bc24)
+تشيني فاتح -> Color(0xffffbc66)
+نص بنص   -> Color(0xffff9c33)
+غامق   -> Color(0xffff8215)
 أيقونات    -> Colors.deepOrangeAccent.shade100

@@ -11,6 +11,8 @@ var color1 = Color(0xff115170);
 var color2 = Color(0xFF0d3d54);
 
 class _ProfileState extends State<Profile> {
+  int _intUsedEchairs = 0;
+  int _intDays = 0;
   String name = '';
   String mobile = '';
   String gend = '';
@@ -64,7 +66,7 @@ class _ProfileState extends State<Profile> {
                     gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [color1, color2])),
+                        colors: [Color(0xffd5e8fe), Color(0xffedf5ff)])),
               ),
             ),
             SizedBox(height: 16.0),
@@ -76,10 +78,10 @@ class _ProfileState extends State<Profile> {
                   Column(
                     children: <Widget>[
                       Text(
-                        '0',
+                        _intUsedEchairs.toString(),
                         style: TextStyle(
                           fontSize: 24.0,
-                          color: Colors.deepOrangeAccent.shade200,
+                          color: Color(0xffff8215),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -98,10 +100,10 @@ class _ProfileState extends State<Profile> {
                   Column(
                     children: <Widget>[
                       Text(
-                        '?',
+                        _intDays.toString(),
                         style: TextStyle(
                           fontSize: 24.0,
-                          color: Colors.deepOrangeAccent.shade200,
+                          color: Color(0xffff8215),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -120,10 +122,10 @@ class _ProfileState extends State<Profile> {
                   Column(
                     children: <Widget>[
                       Text(
-                        '???',
+                        'Scorpions',
                         style: TextStyle(
                           fontSize: 24.0,
-                          color: Colors.deepOrangeAccent.shade200,
+                          color: Color(0xffff8215),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -154,7 +156,7 @@ class _ProfileState extends State<Profile> {
                   gradient: LinearGradient(
                       begin: Alignment.topRight,
                       end: Alignment.bottomLeft,
-                      colors: [Color(0xfff58800), Color(0xfff8bc24)]),
+                      colors: [Color(0xffd5e8fe), Color(0xffedf5ff)]),
                   borderRadius: BorderRadius.all(Radius.circular(20))),
               child: Column(
                 children: <Widget>[
@@ -163,7 +165,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   ListTile(
                     title: Text(
-                      "Profile",
+                      "Account Info",
                       style: TextStyle(
                           fontSize: 20,
                           color: Color(0xff0887c4),
@@ -219,6 +221,8 @@ class _ProfileState extends State<Profile> {
   @override
   void initState() {
     super.initState();
+    _intUsedEchairs = 13;
+    _intDays = 61;
     gend = widget.userValues['gender'];
     name = widget.userValues['name'].toString().substring(0, 1).toUpperCase() +
         widget.userValues['name'].toString().substring(1);
@@ -246,7 +250,7 @@ class ItemCard extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [color1, color2]),
+                colors: [Color(0xffffbc66), Color(0xffff8215)]),
             borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -255,22 +259,20 @@ class ItemCard extends StatelessWidget {
             children: <Widget>[
               Icon(
                 icon,
-                color: Colors.deepOrangeAccent.shade100,
+                color: Colors.white,
               ),
               Spacer(),
               Text(
                 name,
-                style: TextStyle(
-                    color: Colors.deepOrangeAccent.shade100,
-                    fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 4.0,
               ),
               Text(
                 tasks,
-                style: TextStyle(
-                    color: Colors.deepOrangeAccent.shade100.withOpacity(0.6)),
+                style: TextStyle(color: Colors.white.withOpacity(0.6)),
               ),
             ],
           ),
